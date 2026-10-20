@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>邹忌讽齐王纳谏·照镜子</title>
+<meta name="description" content="《邹忌讽齐王纳谏》统考复习：五回剧情里选你的路——说好话的妻妾客、照镜子的邹忌，还是肯听真话的齐威王；注释、翻译、统考课内文言6%一次练齐。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zhi+Mang+Xing&display=swap&text=%E4%B8%AD%E4%BA%BA%E5%9C%BA%E5%AD%B0%E5%BF%8C%E6%80%9D%E6%9A%AE%E6%B3%A8%E7%8E%8B%E7%AA%A5%E7%BA%B3%E7%BE%8E%E8%80%83%E8%A7%86%E8%AE%BD%E8%B0%8F%E9%82%B9%E9%87%8A%E9%95%9C%E9%BD%90">
+<style>
+/* 版式：一面铜镜照五回。镜面在卷首，回目像简牍竖签；可点的正文一律横排 */
+:root{
+  --silk:#ebece6;       /* 素绢：偏冷的灰白 */
+  --silk-2:#dfe1d9;
+  --ink:#1f2326;
+  --ink-2:#565c60;
+  --line:#c7cbc2;
+  --card:#f5f6f2;
+  --zhu:#9e3a2c;        /* 朱：注码、采分点、印 */
+  --bronze:#8d6a32;     /* 铜镜：邹忌 */
+  --rouge:#9b4560;      /* 胭脂：妻妾客 */
+  --xuan:#2e4d6b;       /* 玄青：齐威王 */
+  --mirror-a:#c9a764;--mirror-b:#7a5a28;
+  --hl:rgba(141,106,50,.2);
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --brush:"Zhi Mang Xing","Noto Serif SC","STKaiti","KaiTi",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --silk:#17191b;--silk-2:#212427;--ink:#e4e5e0;--ink-2:#a3a8a8;--line:#363a3d;--card:#1d2023;
+  --zhu:#de6a58;--bronze:#d2aa62;--rouge:#d27f98;--xuan:#86a9cc;--mirror-a:#b8975a;--mirror-b:#5b4320;--hl:rgba(210,170,98,.2);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --silk:#17191b;--silk-2:#212427;--ink:#e4e5e0;--ink-2:#a3a8a8;--line:#363a3d;--card:#1d2023;
+  --zhu:#de6a58;--bronze:#d2aa62;--rouge:#d27f98;--xuan:#86a9cc;--mirror-a:#b8975a;--mirror-b:#5b4320;--hl:rgba(210,170,98,.2);color-scheme:dark}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--silk);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.85;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--silk)}
+.wrap{max-width:680px;margin:0 auto}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--zhu);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{text-wrap:pretty}
+
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--silk);border-bottom:1px solid var(--line);
+  display:flex;gap:12px;align-items:center;justify-content:space-between;padding:8px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2)}
+.bar b{color:var(--ink);font-variant-numeric:tabular-nums}
+.paths{display:flex;gap:9px}
+.paths span{display:inline-flex;align-items:center;gap:4px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block;background:var(--c)}
+.s{--c:var(--rouge)}.z{--c:var(--bronze)}.w{--c:var(--xuan)}
+
+/* 卷首：铜镜 */
+.hero{padding:30px 0 16px}
+.hero-top{display:flex;gap:18px;align-items:flex-start}
+.mirror{flex:none;width:132px;height:132px;border-radius:50%;position:relative;
+  background:radial-gradient(circle at 38% 34%,var(--mirror-a),var(--mirror-b) 72%);
+  box-shadow:inset 0 0 0 6px color-mix(in srgb,var(--mirror-b) 80%,#000 20%),inset 0 0 0 9px var(--mirror-a)}
+.mirror span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--brush);font-size:74px;color:rgba(255,248,230,.85);transform:scaleX(-1)}
+.mirror::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:14px;margin:-7px;border-radius:50%;background:var(--mirror-b);opacity:.0}
+.title-v{writing-mode:vertical-rl;font-family:var(--brush);font-size:46px;line-height:1.05;letter-spacing:.02em;flex:none}
+.title-v .n{font-family:var(--brush)}
+.hero-meta{min-width:0;flex:1;display:flex;flex-direction:column;gap:10px}
+.byline{font-size:14px;color:var(--ink-2);margin:0}
+.seal{writing-mode:vertical-rl;width:58px;height:58px;border:2.5px solid var(--zhu);color:var(--zhu);font-weight:900;font-size:21px;line-height:26px;
+  text-align:center;padding:2px;border-radius:4px}
+.lead{margin:16px 0 12px}
+.roles{display:grid;gap:8px;margin:8px 0}
+.role{display:flex;flex-direction:column;padding:2px 0}
+.role b{color:var(--c)}
+.role b::before{content:"";display:inline-block;width:.7em;height:.7em;border-radius:50%;border:2px solid var(--c);margin-right:.45em;vertical-align:.02em}
+.role span{padding-left:1.15em;font-size:15px;color:var(--ink-2)}
+.exam-note{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:14px 0 0;line-height:1.7}
+.exam-note b{color:var(--zhu)}
+
+.hui{padding:34px 0 8px;border-top:1px solid var(--line)}
+.hui-head{display:flex;gap:12px;align-items:flex-end;margin-bottom:14px}
+.hui-no{writing-mode:vertical-rl;font-size:14px;letter-spacing:.2em;color:var(--bronze);border:1px solid var(--bronze);border-radius:2px;padding:6px 2px;line-height:1.2}
+.hui-title{font-family:var(--brush);font-size:46px;line-height:1}
+.hui-sub{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-left:auto;text-align:right}
+
+.yuan{font-size:19px;line-height:2.15;margin:0 0 6px;text-indent:2em;letter-spacing:.02em}
+.n{border:0;background:none;padding:0;color:inherit;font:inherit;letter-spacing:inherit;border-bottom:1.5px dotted var(--zhu);line-height:1.2}
+.n sup{color:var(--zhu);font-family:var(--sans);font-size:.55em;margin-left:1px}
+.n.got{background:var(--hl);border-bottom-style:solid}
+.n.bu{border-bottom-color:var(--ink-2)}
+.n.bu sup{color:var(--ink-2)}
+.tip{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin:0 0 18px}
+
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px;margin:14px 0}
+.box h3{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--ink-2);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.box h3 em{font-style:normal;color:var(--zhu)}
+.key{font-size:18px;font-weight:600;margin:4px 0 10px}
+textarea{width:100%;min-height:64px;font:inherit;font-size:16px;line-height:1.7;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--silk);color:var(--ink);resize:vertical}
+.btn{border:1px solid var(--ink);background:transparent;border-radius:999px;padding:5px 16px;font-family:var(--sans);font-size:14px;margin-top:8px}
+.btn.solid{background:var(--ink);color:var(--silk)}
+.ans{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans p{margin:0 0 8px}
+.pt{color:var(--zhu);font-weight:600;border-bottom:1.5px solid var(--zhu)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-family:var(--sans);font-size:14px;line-height:1.6;margin:6px 0}
+.chk input{margin-top:4px;accent-color:var(--zhu);flex:none;width:16px;height:16px}
+.src{font-family:var(--sans);font-size:12px;color:var(--ink-2)}
+
+.ask{font-size:17px;margin:4px 0 10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--silk);border-radius:10px;padding:10px 12px 10px 14px;line-height:1.7;transition:border-color .2s,background .2s,opacity .2s}
+.opt .who{display:block;font-family:var(--sans);font-size:12px;color:var(--c);letter-spacing:.06em;opacity:0;height:0;overflow:hidden}
+.chosen .opt{opacity:.5}
+.chosen .opt.on{opacity:1;border-color:var(--c);background:var(--card)}
+.chosen .opt .who{opacity:1;height:auto;margin-bottom:2px}
+.echo{margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--silk-2);font-size:15.5px;line-height:1.8}
+.echo b{color:var(--zhu);font-weight:600}
+
+.result{margin:18px 0;padding:16px;border-radius:10px;border:2px solid var(--c,var(--line));background:var(--card)}
+.result h3{font-size:22px;color:var(--c,var(--ink));margin-bottom:6px}
+.result p{margin:0 0 8px}
+.zhuti{font-size:16px;border-block:1px solid var(--zhu);padding:10px 4px;margin:12px 0}
+
+.paper-scroll{overflow-x:auto;margin:8px 0 12px}
+.juan{font-size:16px;line-height:2;white-space:pre;font-family:var(--serif);background:var(--card);border:1px solid var(--line);padding:12px 12px 12px 0;display:inline-block;min-width:100%}
+.juan .ln{display:inline-block;width:2.4em;text-align:right;padding-right:.6em;color:var(--ink-2);font-family:var(--sans);font-size:12px}
+.juan b{font-weight:900}
+.q{margin:14px 0}
+.q .qt{font-weight:600}
+.q .pct{font-family:var(--sans);font-size:13px;color:var(--ink-2)}
+.score{font-family:var(--sans);font-size:15px;margin:10px 0;padding:10px 12px;border-radius:8px;background:var(--silk-2)}
+.score b{font-size:22px;color:var(--zhu);font-variant-numeric:tabular-nums}
+.syn{display:grid;gap:8px;margin:8px 0}
+.syn details{border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:var(--silk)}
+.syn summary{cursor:pointer}
+.syn p{margin:6px 0 4px;font-size:15.5px}
+
+.flash{text-align:center;padding:18px 12px}
+.flash .fw{font-size:34px;font-weight:900;letter-spacing:.1em;display:block}
+.flash .py{font-family:var(--sans);font-size:14px;color:var(--ink-2);min-height:1.4em}
+.flash .m{min-height:3.4em;font-size:16px;margin:8px 0}
+.flash .ctx{font-size:14px;color:var(--ink-2)}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:2px solid var(--zhu);
+  padding:14px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -8px 24px rgba(0,0,0,.12);transform:translateY(105%);transition:transform .22s ease}
+.sheet.open{transform:none}
+.sheet-in{max-width:680px;margin:0 auto;position:relative}
+.sheet .sw{font-size:24px;font-weight:900}
+.sheet .py{font-family:var(--sans);color:var(--ink-2);margin-left:8px}
+.sheet .m{margin:4px 0 0;font-size:17px;padding-right:24px}
+.sheet .tag{display:inline-block;font-family:var(--sans);font-size:12px;border:1px solid var(--zhu);color:var(--zhu);border-radius:4px;padding:0 6px;margin-top:6px}
+.sheet .x{position:absolute;right:0;top:0;border:0;background:none;font-size:22px;line-height:1;color:var(--ink-2);padding:4px 6px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:16px 0 120px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="bar" aria-live="polite">
+  <span>注释 <b id="got">0</b>/21</span>
+  <span class="paths">
+    <span class="s"><i class="dot"></i>妻妾客 <b id="cs">0</b></span>
+    <span class="z"><i class="dot"></i>邹忌 <b id="cz">0</b></span>
+    <span class="w"><i class="dot"></i>齐王 <b id="cw">0</b></span>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="hero-top">
+    <div class="mirror" aria-hidden="true"><span>美</span></div>
+    <h1 class="title-v" id="titleNote"></h1>
+    <div class="hero-meta">
+      <p class="byline">《战国策》｜初二下册第六课｜初三统考复习</p>
+      <div class="seal" aria-label="印：门庭若市">门庭若市</div>
+    </div>
+  </div>
+  <p class="lead">一面镜子，三句好话，一位肯听真话的国君。故事分五回走完。每一回，你都要选一次：<b>如果换作是你，你会怎么做？</b></p>
+  <div class="roles">
+    <div class="role s"><b>说好话的妻、妾、客</b><span>偏爱你、怕你、有求于你，所以只说好听的</span></div>
+    <div class="role z"><b>照镜子的邹忌</b><span>不轻信好话，想清楚了，再委婉地说出真话</span></div>
+    <div class="role w"><b>肯听真话的齐威王</b><span>被人指出过错，还肯为这句话付赏</span></div>
+  </div>
+  <p class="exam-note">统考丙组文言文 15%＝<b>课内 6%</b>＋课外 9%。2022–2025 年的课内篇每年三题、各 2%，<b>第 3 题都是句子翻译</b>；前两题多考内容理解，常问人物评价、启示或道理（2025 年第 1 题改考词义）。所以每一回都练一句翻译；画了红点线的字点一下就是课本注释，连题目在内共 21 条，五回读完就收齐了。最后一关按统考卷面实战。</p>
+</header>
+
+<main id="story"></main>
+
+<section class="hui" id="end">
+  <div class="hui-head"><span class="hui-no">结局</span><h2 class="hui-title">镜中人</h2><span class="hui-sub">五回走完<br>看你是谁</span></div>
+  <div id="result"></div>
+</section>
+
+<section class="hui" id="kaochang">
+  <div class="hui-head"><span class="hui-no">实战</span><h2 class="hui-title">考场</h2><span class="hui-sub">仿 2022–2025 统考丙组<br>课内文言 6%</span></div>
+  <p>卷面照统考格式：节选正文、标行号，受考句用粗体。先写，再对照采分点给自己打分。</p>
+  <div class="paper-scroll"><div class="juan" id="juan"></div></div>
+  <p class="src">（《战国策·邹忌讽齐王纳谏》节选）　3 题全答</p>
+
+  <div class="q">
+    <p class="qt">1. 邹忌如何由自己的经历，推断齐王受了蒙蔽？<span class="pct">（2%）</span></p>
+    <textarea id="q1" aria-label="第1题作答"></textarea>
+  </div>
+  <div class="q">
+    <p class="qt">2. 从文中可见，齐威王是个怎样的国君？他的做法给了我们什么启示？<span class="pct">（2%）</span></p>
+    <textarea id="q2" aria-label="第2题作答"></textarea>
+  </div>
+  <div class="q">
+    <p class="qt">3. 把以下句子译成白话文。<span class="pct">（2%）</span></p>
+    <p><b id="q3s"></b><span id="q3l"></span></p>
+    <textarea id="q3" aria-label="第3题作答"></textarea>
+  </div>
+  <button class="btn solid" id="showKey">交卷，对照采分点</button>
+  <div id="key" hidden>
+    <div class="box">
+      <h3>第 1 题<em>2%</em></h3>
+      <p>邹忌的妻子偏爱他，妾畏惧他，客人有求于他，所以都说他比徐公美；同样，宫中的姬妾和近臣偏爱大王，朝廷大臣畏惧大王，国内百姓都有求于大王，可见大王受的蒙蔽更严重。</p>
+      <label class="chk"><input type="checkbox" data-v="1">写出自己受蒙蔽的三个原因：私、畏、有求</label>
+      <label class="chk"><input type="checkbox" data-v="1">写出由此类推到大王：宫妇左右、朝廷之臣、四境之内</label>
+    </div>
+    <div class="box">
+      <h3>第 2 题<em>2%</em></h3>
+      <p>齐威王是一个开明、有魄力、做事果断的国君。他的做法启示我们，要善于听取别人合理的建议，并且积极改正自己的不足。</p>
+      <label class="chk"><input type="checkbox" data-v="1">答出人物形象：开明、有魄力、做事果断（肯纳谏）</label>
+      <label class="chk"><input type="checkbox" data-v="1">答出启示：虚心听取批评、积极改正不足</label>
+      <p class="src">依据：教师手册练习 5、6 参考答案。答案写成完整句子，别只列词语。</p>
+    </div>
+    <div class="box">
+      <h3>第 3 题<em>2%</em></h3>
+      <p>所有的大臣、官吏、百姓，能够<span class="pt">当面指责</span><span class="pt">我的过错</span>的，<span class="pt">可得上等奖赏</span>。</p>
+      <label class="chk"><input type="checkbox" data-v="1">「面刺」＝当面指责</label>
+      <label class="chk"><input type="checkbox" data-v="0.5">「寡人之过」＝我的过错</label>
+      <label class="chk"><input type="checkbox" data-v="0.5">「受上赏」＝得上等奖赏</label>
+    </div>
+    <div class="score">自评得分：<b id="sc">0</b> / 6%</div>
+    <p class="src">采分分配是练习用的参考，统考原卷不附答案。</p>
+  </div>
+
+  <div class="box">
+    <h3>附加题：一词多义、古今异义<em>仿 2025 第 1 题</em></h3>
+    <p class="src" style="margin:0 0 6px">2025 年统考第 1 题考过词义：写出“汝”在现代汉语中的意思，再找文中意思相同的词。这一课的「孰」「朝」「地方」「美我」都是同一个字换了意思的好材料。先想，再点开。</p>
+    <div class="syn">
+      <details><summary>「我孰与城北徐公美」和「孰视之」，两个「孰」意思一样吗？</summary><p>不一样。前一个是<b>谁，哪一个</b>；后一个同「熟」，是<b>仔细</b>。课本给两个「孰」各下了一条注释。</p></details>
+      <details><summary>「朝服衣冠」「入朝见威王」「皆朝于齐」，三个「朝」各是什么意思？</summary><p>「朝服衣冠」的「朝」读 zhāo，<b>早晨</b>（服：穿戴）；「入朝」的朝是<b>朝廷</b>；「皆朝于齐」的朝是<b>朝见</b>。</p></details>
+      <details><summary>「今齐地方千里」的「地方」，和今天说的「地方」一样吗？</summary><p>不一样。古义是<b>土地方圆、面积</b>，今义是<b>区域、处所</b>。（课本练习 1）</p></details>
+      <details><summary>「吾妻之美我者」的「美」，和「徐公美」的「美」一样吗？</summary><p>不一样。「徐公美」是形容词，美丽；「美我」是<b>认为我美</b>。同一段里的「私我」（偏爱我）、「畏我」（惧怕我）也要会译。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="hui" id="zhushi">
+  <div class="hui-head"><span class="hui-no">温习</span><h2 class="hui-title">注释</h2><span class="hui-sub">21 条课本注释<br>抽卡自测</span></div>
+  <div class="box flash">
+    <span class="fw" id="fw"></span>
+    <div class="py" id="fpy"></div>
+    <div class="ctx" id="fctx"></div>
+    <div class="m" id="fm"></div>
+    <div class="row">
+      <button class="btn" id="fflip">翻面看释义</button>
+      <button class="btn" id="fyes" hidden>记得</button>
+      <button class="btn" id="fno" hidden>再来一次</button>
+    </div>
+    <p class="src" style="margin-top:10px">已记熟 <b id="fdone">0</b>/21　·　「记得」的卡不再抽到</p>
+  </div>
+</section>
+
+<footer>
+  原文与注释依独中初中华文课本初二下册第六课《邹忌讽齐王纳谏》；译文要点、人物形象、启示依教师手册；结局的中心思想依华文组课文中心思想合集。标「补」的注释是课本以外的补充。<br>
+  设计：林子策（Lim Zi Ce）｜南华独中华文组。
+</footer>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="false" aria-labelledby="sw">
+  <div class="sheet-in">
+    <button class="x" id="sx" aria-label="关闭">×</button>
+    <span class="sw" id="sw"></span><span class="py" id="spy"></span>
+    <p class="m" id="sm"></p>
+    <span class="tag" id="stag" hidden></span>
+  </div>
+</div>
+
+<script>
+// 课本注释 21 条，按课本页面编号（g＝页：57/58/59）；bu＝课本以外的补充，不计入收集
+// 正文里写 {词} 或 {词|id}（同一个字有两条注释时用 id 区分）
+const N = {
+  "题":{w:"邹忌讽齐王纳谏",g:57,n:1,m:"邹忌劝齐威王接纳臣民的规劝。邹忌：战国时齐国谋臣，有辩才，敢于进谏。讽：用暗示的方法，委婉地规劝。谏：规劝君主，使其改正错误。"},
+  "修":{g:57,n:2,m:"长，这里指身高。"},
+  "昳丽":{g:57,n:3,py:"yì",m:"光艳美丽。"},
+  "服":{g:57,n:4,m:"穿，戴。"},
+  "窥镜":{g:57,n:5,m:"从镜子中观察自己。窥：观察。"},
+  "孰1":{w:"孰",g:57,n:6,m:"谁，哪一个。"},
+  "孰2":{w:"孰",g:58,n:1,m:"同“熟”，仔细。"},
+  "弗":{g:58,n:2,py:"fú",m:"不。"},
+  "美我":{g:58,n:3,m:"认为我美。"},
+  "私":{g:58,n:4,m:"偏爱。"},
+  "诚":{g:58,n:5,m:"确实。"},
+  "皆以美于徐公":{g:58,n:6,m:"都认为我比徐公美。以：以为、认为。于：比。"},
+  "地方":{g:58,n:7,m:"土地面积。地：土地。方：方圆、面积。",tag:"古今异义：今义是「区域」"},
+  "宫妇":{g:58,n:8,m:"宫中的姬妾。"},
+  "左右":{g:58,n:9,m:"国君身边的近臣。"},
+  "蔽":{g:58,n:10,m:"受蒙蔽，指因事实真相被掩盖而上当。"},
+  "面刺":{g:58,n:11,m:"当面指责。面：当面。刺：指责，议论。"},
+  "谤讥于市朝":{g:59,n:1,py:"cháo",m:"在公众场所议论（君王的过失）。谤：公开指责别人的过错。讥：这里指议论。市：市集，朝：朝廷；都是人多的地方。"},
+  "门庭若市":{g:59,n:2,m:"朝廷像市集一样热闹。"},
+  "间进":{g:59,n:3,py:"jiàn",m:"偶尔有人进谏。"},
+  "期年":{g:59,n:4,py:"jī",m:"满一年。"},
+  // 补
+  "朝1":{w:"朝",bu:1,py:"zhāo",m:"早晨。手册译作「有一天早晨」。",tag:"一词多义：另见「入朝」「皆朝于齐」"},
+  "旦日":{bu:1,m:"第二天。"},
+  "明日":{bu:1,m:"古义：第二天（课本练习 1）；今义：明天。这里接在「旦日」之后，手册译作「又过了一天」。",tag:"古今异义"},
+  "寡人":{bu:1,m:"古代君主对自己的谦称。手册译作「我」。"},
+  "朝2":{w:"朝",bu:1,py:"cháo",m:"朝见，臣子或属国拜见君主。",tag:"一词多义：另见「朝服」「入朝」"}
+};
+const CIRC = "⓪①②③④⑤⑥⑦⑧⑨⑩⑪";
+
+const HUI = [
+ {no:"第一回",t:"窥镜",sub:"第1段",
+  y:["邹忌{修}八尺有余，而形貌{昳丽}。{朝|朝1}{服}衣冠，{窥镜}，谓其妻曰：“我{孰|孰1}与城北徐公美？”其妻曰：“君美甚，徐公何能及君也？”城北徐公，齐国之美丽者也。忌不自信，而复问其妾曰：“吾孰与徐公美？”妾曰：“徐公何能及君也？”"],
+  key:"君美甚，徐公何能及君也？",
+  tr:"<span class=pt>您美极了</span>，徐公<span class=pt>怎么能比得上</span><span class=pt>您</span>呢！",
+  pts:["「君美甚」＝您美极了（甚：很、极）","「何能及」＝怎么能比得上（反问）","「君」＝您，妻子对丈夫的敬称"],
+  ask:"妻子说你美极了，妾也说徐公比不上你。镜子里的你，确实不错。你——",
+  o:[
+   {r:"z",x:"「真的吗？」心里不踏实，再去问问别人。",e:"原文正是这样：<b>忌不自信，而复问其妾</b>，第二天又问了客。手册说三人的回答「大同小异」，异在语气：妻子热烈赞美，妾小心谨慎，客平铺直叙。"},
+   {r:"s",x:"「果然，我就是齐国第一美男子。」照单全收。",e:"好话听得舒服，很少人会怀疑。可原文的邹忌偏偏<b>不自信</b>，因为他知道城北徐公是「齐国之美丽者也」。"},
+   {r:"w",x:"「说点不好听的吧：我到底哪里比不上徐公？」",e:"你主动要听批评。原文里这时还没有人这样做；后来下令「面刺寡人之过者，受上赏」的，是齐威王。你提前走上了他的路。"}
+  ]},
+ {no:"第二回",t:"孰视",sub:"第1段",
+  y:["{旦日}，客从外来，与坐谈，问之：“吾与徐公孰美？”客曰：“徐公不若君之美也。”{明日}，徐公来，{孰|孰2}视之，自以为不如；窥镜而自视，又{弗}如远甚。"],
+  key:"孰视之，自以为不如；窥镜而自视，又弗如远甚。",
+  tr:"（邹忌）<span class=pt>仔细地端详他</span>，<span class=pt>自己觉得不如他</span>美丽；再照着镜子看看自己，<span class=pt>更觉得远远比不上</span>人家。",
+  pts:["「孰视」＝仔细地看（孰：同「熟」）","「自以为不如」＝自己觉得不如他","「弗如远甚」＝远远比不上（弗：不）"],
+  ask:"三个人都说你美，可徐公真的站在面前了。你仔细一看：确实比不上。你——",
+  o:[
+   {r:"s",x:"「今天光线不好。」转头再问客人一次：「我们俩谁美？」",e:"想再听一次好话，好把刚才看见的忘掉。原文的邹忌没有逃：<b>窥镜而自视，又弗如远甚</b>，他承认了。"},
+   {r:"w",x:"大方地对徐公说：「你确实比我美。」",e:"肯承认比不上别人，是听得进真话的第一步。原文的邹忌后来把这句话带上了朝廷：<b>臣诚知不如徐公美</b>。"},
+   {r:"z",x:"晚上躺在床上，一直想：他们三个为什么都说我美？",e:"原文：<b>暮寝而思之</b>。手册说，邹忌没有把思路停在家庭琐事上，而是由自身联想到国家。下一回，他就想通了。"}
+  ]},
+ {no:"第三回",t:"暮思",sub:"第1段",
+  y:["暮寝而思之，曰：“吾妻之{美我}者，{私}我也；妾之美我者，畏我也；客之美我者，欲有求于我也。”"],
+  key:"吾妻之美我者，私我也；妾之美我者，畏我也；客之美我者，欲有求于我也。",
+  tr:"我的妻子<span class=pt>认为我美</span>，是<span class=pt>偏爱我</span>；我的小妾认为我美，是<span class=pt>惧怕我</span>；客人认为我美，是<span class=pt>想要有求于我</span>。",
+  pts:["「美我」＝认为我美","「私」＝偏爱；「畏」＝惧怕","「欲有求于我」＝想要有求于我"],
+  ask:"换作今天：你的作文，好朋友说写得好，坐你旁边、想借你作业的同学也说写得好。你——",
+  o:[
+   {r:"w",x:"交给最严格的老师，请他尽量挑毛病。",e:"你主动去找会当面指出你过错的人。齐威王后来定的<b>上赏</b>，就是给这样的人。"},
+   {r:"z",x:"先想一想：谁是真心，谁是客气？再找一个跟你没有利害关系的人看看。",e:"这正是邹忌的方法：把每一句好话背后的原因想清楚，<b>私我</b>、<b>畏我</b>、<b>有求于我</b>。"},
+   {r:"s",x:"大家都说好，那就是好。直接交。",e:"这是邹忌想通之前的处境。好话背后有三种心：偏爱、害怕、有所求。听不出来，就会被<b>蔽</b>。"}
+  ]},
+ {no:"第四回",t:"讽王",sub:"第2段",
+  y:["于是入朝见威王，曰：“臣{诚}知不如徐公美。臣之妻私臣，臣之妾畏臣，臣之客欲有求于臣，{皆以美于徐公}。今齐{地方}千里，百二十城，{宫妇}{左右}莫不私王，朝廷之臣莫不畏王，四境之内莫不有求于王：由此观之，王之{蔽}甚矣。”"],
+  key:"今齐地方千里，百二十城，宫妇左右莫不私王。",
+  tr:"如今的齐国，<span class=pt>土地方圆千里</span>，有一百二十座城池，<span class=pt>宫中的姬妾和身边的近臣</span>，<span class=pt>没有不偏爱大王的</span>。",
+  pts:["「地方」＝土地方圆（古今异义，不是今天的「区域」）","「宫妇左右」＝宫中的姬妾和国君身边的近臣","「莫不私王」＝没有不偏爱大王的（双重否定）"],
+  ask:"现在你是齐威王。一位大臣当着满朝文武对你说：「王之蔽甚矣」，大王受的蒙蔽太深了。你——",
+  o:[
+   {r:"s",x:"脸一沉：「寡人身边都是忠臣，何蔽之有？」",e:"被说中的时候，人最容易发怒。手册收录的文章提醒，讽谏帝王是冒险的事。邹忌敢说，也说得巧：先讲比美的小事，再推到国事，这就是题目里的<b>讽</b>，委婉地规劝。"},
+   {r:"w",x:"「善。」当场下令，请所有人来批评我。",e:"原文：<b>王曰：“善。”乃下令</b>。手册收录的文章说，这个「善」字力有千钧，表明了齐威王的态度。"},
+   {r:"z",x:"不急着回答。回宫后先想一想：谁偏爱我，谁怕我，谁有求于我？",e:"你用邹忌照镜子的方法照自己。手册说邹忌由己及君、以小见大，就是要让齐王自己看见受蒙蔽有多严重。"}
+  ]},
+ {no:"第五回",t:"纳谏",sub:"第3–4段",
+  y:["王曰：“善。”乃下令：“群臣吏民能{面刺}{寡人}之过者，受上赏；上书谏寡人者，受中赏；能{谤讥于市朝}，闻寡人之耳者，受下赏。”令初下，群臣进谏，{门庭若市}；数月之后，时时而{间进}；{期年}之后，虽欲言，无可进者。","燕、赵、韩、魏闻之，皆{朝|朝2}于齐。此所谓战胜于朝廷。"],
+  key:"期年之后，虽欲言，无可进者。",
+  tr:"<span class=pt>一年以后</span>，<span class=pt>即使</span>想进言，也<span class=pt>没有什么可说的了</span>。",
+  pts:["「期年」＝满一年","「虽」＝即使","「无可进者」＝没有什么可以进谏的"],
+  ask:"命令一下，宫门口挤满了来批评你的人，像菜市场一样。你——",
+  o:[
+   {r:"z",x:"一条条对照：哪些是真错，哪些只是抱怨。",e:"听批评也要会分辨，这是照镜子的功夫。原文写了三个阶段：<b>令初下</b>、<b>数月之后</b>、<b>期年之后</b>，来进谏的人越来越少。"},
+   {r:"s",x:"「怎么这么多毛病？」听得心烦，悄悄把赏钱减了。",e:"手册说，<b>门庭若市</b>正说明齐国以前确实有许多积弊。毛病越多，越不能停。"},
+   {r:"w",x:"照赏不误，一件件改，改到没人有话可说。",e:"原文：<b>期年之后，虽欲言，无可进者</b>。手册说这意味着齐威王知过能改，齐国政治日益清明；燕、赵、韩、魏<b>皆朝于齐</b>，不出一兵一卒，<b>战胜于朝廷</b>。"}
+  ]}
+];
+
+const RES = {
+ s:{name:"说好话的妻、妾、客",p:["你习惯让大家都舒服：说好听的，也爱听好听的。妻是偏爱，妾是害怕，客是有求于人。三种好话出发点不同，却都让邹忌看不清自己。","好话不一定出于坏心。手册给课本练习 7 的参考答案也说到善意的「蒙蔽」：朋友看到你分享的食物不多，就客气地说吃过了。分辨得出是哪一种，才不会被蒙住。"]},
+ z:{name:"照镜子的邹忌",p:["你不轻信好话，会照镜子，也会夜里想清楚。手册说邹忌「头脑冷静，能正确认识自己，有自知之明，善于发现问题，娴于辞令」。","他更难得的是想通之后的做法：不直冲冲地指责国君，而是先讲比美的小事，再推到国家大事。这就是题目里的「讽」。"]},
+ w:{name:"肯听真话的齐威王",p:["你受得了批评，还肯为批评付赏。手册说齐王「开明，有魄力，做事果断」。","一个「善」字之后马上下令，三种奖赏、三个阶段，从门庭若市到无可进者。听得进真话，往往比说得出真话更难。"]}
+};
+const ZHUTI = "通过记叙邹忌由与徐公比美的切身经历设喻劝谏齐威王除蔽纳谏的过程，传达了国君应广开言路、虚心听取批评才能使国家强盛的道理。";
+
+const JUAN = [
+ "于是入朝见威王，曰：“臣诚知不如徐公美。臣之妻私臣，臣之妾畏臣，臣之客欲有求于臣，皆以美于徐公。今齐地方千里，百二十城，宫妇左右莫不私王，朝廷之臣莫不畏王，四境之内莫不有求于王：由此观之，王之蔽甚矣。”",
+ "王曰：“善。”乃下令：“【群臣吏民能面刺寡人之过者，受上赏】；上书谏寡人者，受中赏；能谤讥于市朝，闻寡人之耳者，受下赏。”令初下，群臣进谏，门庭若市；数月之后，时时而间进；期年之后，虽欲言，无可进者。",
+ "燕、赵、韩、魏闻之，皆朝于齐。此所谓战胜于朝廷。"
+];
+
+/* ---------- 状态 ---------- */
+const S = {got:{}, pick:{}, done:{}};
+try{ Object.assign(S, JSON.parse(localStorage.getItem("zouji")||"{}")); }catch(e){}
+const save = () => { try{ localStorage.setItem("zouji", JSON.stringify(S)); }catch(e){} };
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const word = id => N[id].w || id;
+
+function btn(id){
+  const n = N[id];
+  return `<button class="n${n.bu?" bu":""}${S.got[id]?" got":""}" data-id="${id}">${word(id)}<sup>${n.bu?"补":CIRC[n.n]}</sup></button>`;
+}
+function mark(text){
+  return esc(text).replace(/\{([^}|]+)(?:\|([^}]+))?\}/g, (_, w, id) => btn(id || w));
+}
+$("titleNote").innerHTML = btn("题");
+
+$("story").innerHTML = HUI.map((h,i) => `
+<section class="hui" id="h${i+1}">
+  <div class="hui-head"><span class="hui-no">${h.no}</span><h2 class="hui-title">${h.t}</h2><span class="hui-sub">${h.sub}</span></div>
+  ${h.y.map(p => `<p class="yuan">${mark(p)}</p>`).join("")}
+  ${i===0?`<p class="tip">点画线的字看注释。红色编号＝课本注释，灰色「补」＝课本以外的补充。题目也有一条注释，在卷首。</p>`:""}
+  <div class="box">
+    <h3>翻译练习<em>统考 2%</em></h3>
+    <p class="key">${h.key}</p>
+    <textarea id="t${i}" aria-label="${h.no}翻译" placeholder="先自己译一遍，再对照。"></textarea>
+    <button class="btn" data-tr="${i}">对照采分点</button>
+    <div class="ans" id="a${i}" hidden>
+      <p>${h.tr}</p>
+      ${h.pts.map(p => `<label class="chk"><input type="checkbox">${p}</label>`).join("")}
+      <p class="src">句子要通顺；红色划线的词是采分点，译漏一个就丢分。</p>
+    </div>
+  </div>
+  <div class="box">
+    <h3>此刻，你会怎么做？<em>选一条路</em></h3>
+    <p class="ask">${h.ask}</p>
+    <div class="opts" id="o${i}">
+      ${h.o.map((o,j) => `<button class="opt ${o.r}" data-h="${i}" data-o="${j}"><span class="who">${RES[o.r].name}</span>${o.x}</button>`).join("")}
+    </div>
+    <div class="echo" id="e${i}" hidden></div>
+  </div>
+</section>`).join("");
+
+function choose(i, j){
+  S.pick[i] = j; save();
+  const box = $("o"+i); box.classList.add("chosen");
+  box.querySelectorAll(".opt").forEach((b,k) => b.classList.toggle("on", k===j));
+  const e = $("e"+i); e.hidden = false; e.innerHTML = HUI[i].o[j].e;
+  tally();
+}
+function tally(){
+  const c = {s:0,z:0,w:0};
+  Object.entries(S.pick).forEach(([i,j]) => c[HUI[i].o[j].r]++);
+  $("cs").textContent=c.s; $("cz").textContent=c.z; $("cw").textContent=c.w;
+  const n = c.s+c.z+c.w, r = $("result");
+  if(n < HUI.length){ r.innerHTML = `<div class="result"><p>你已选了 ${n}/5 回。五回都选完，这里会告诉你在镜子里照见的是谁。</p></div>`; return; }
+  const max = Math.max(c.s,c.z,c.w), top = ["s","z","w"].filter(k => c[k]===max);
+  r.innerHTML = top.map(k => `<div class="result ${k}"><p class="src">五回之中，你有 ${c[k]} 回走了这条路</p><h3>${RES[k].name}</h3>${RES[k].p.map(p=>`<p>${p}</p>`).join("")}</div>`).join("") +
+    `<p>三种人，故事里都有。这篇课文要你记住的是这一句：</p><p class="zhuti">${ZHUTI}</p><p class="src">课文中心思想（华文组课文中心思想合集）。统考问「道理」「启示」时，回扣这一句。</p>`;
+}
+
+const sheet = $("sheet");
+function openNote(id){
+  const n = N[id];
+  $("sw").textContent = word(id); $("spy").textContent = n.py || "";
+  $("sm").textContent = (n.bu ? "补充：" : `课本注${CIRC[n.n]}：`) + n.m;
+  const t = $("stag"); t.hidden = !n.tag; t.textContent = n.tag || "";
+  sheet.classList.add("open");
+  if(!n.bu && !S.got[id]){ S.got[id]=1; save(); }
+  document.querySelectorAll(`.n[data-id="${id}"]`).forEach(b => b.classList.add("got"));
+  $("got").textContent = Object.keys(S.got).filter(k=>N[k]&&!N[k].bu).length;
+}
+$("sx").onclick = () => sheet.classList.remove("open");
+document.addEventListener("keydown", e => { if(e.key==="Escape") sheet.classList.remove("open"); });
+document.addEventListener("click", e => {
+  const n = e.target.closest(".n"); if(n){ openNote(n.dataset.id); return; }
+  const o = e.target.closest(".opt"); if(o){ choose(+o.dataset.h, +o.dataset.o); return; }
+  const t = e.target.closest("[data-tr]"); if(t){ $("a"+t.dataset.tr).hidden = false; t.hidden = true; return; }
+  if(!e.target.closest("#sheet")) sheet.classList.remove("open");
+});
+
+/* ---------- 考场卷面：每行 18 字，每 3 行标行号 ---------- */
+(function(){
+  const PER = 18; let lines = [], keyLine = 0, keyEnd = 0;
+  JUAN.forEach(p => {
+    let cur = "　　", len = 2, bold = false;
+    const cs = [...p];
+    cs.forEach((ch, k) => {
+      if(ch==="【"){ bold = true; cur += "<b>"; if(!keyLine) keyLine = lines.length+1; return; }
+      if(ch==="】"){ bold = false; cur += "</b>"; keyEnd = len ? lines.length+1 : lines.length; return; }
+      cur += esc(ch); len++;
+      // ponytail: 标点不放行首，挂在上一行末（该行多一字）
+      const nx = cs.slice(k+1).find(c => c!=="【" && c!=="】");
+      if(len>=PER && !"，。；：？！、”’）".includes(nx||"")){ lines.push(cur + (bold?"</b>":"")); cur = bold?"<b>":""; len = 0; }
+    });
+    if(len) lines.push(cur);
+  });
+  $("juan").innerHTML = lines.map((l,i) => `<span class="ln">${(i+1)%3===0 ? i+1 : ""}</span>${l}`).join("\n");
+  $("q3s").textContent = "群臣吏民能面刺寡人之过者，受上赏。";
+  $("q3l").textContent = keyEnd>keyLine ? `（第${keyLine}~${keyEnd}行）` : `（第${keyLine}行）`;
+})();
+$("showKey").onclick = () => { $("key").hidden = false; $("showKey").hidden = true; };
+$("key").addEventListener("change", () => {
+  let s = 0; $("key").querySelectorAll("input:checked").forEach(c => s += +c.dataset.v);
+  $("sc").textContent = s;
+});
+
+/* ---------- 注释抽卡（只抽 21 条课本注释） ---------- */
+const KEYS = Object.keys(N).filter(k => !N[k].bu);
+const CTX = {"题":"题目"};
+HUI.flatMap(h=>h.y).forEach(p => {
+  const plain = p.replace(/\{([^}|]+)(?:\|[^}]+)?\}/g,"$1");
+  let off = 0;
+  p.replace(/\{([^}|]+)(?:\|([^}]+))?\}/g, (m, w, id, pos) => {
+    id = id || w; const i = pos - off; off += m.length - w.length;
+    if(CTX[id]) return;
+    const a = Math.max(0, ..."，。；：“".split("").map(c => plain.lastIndexOf(c, i-1)+1));
+    let b = plain.slice(i).search(/[，。；？！：]/); b = b<0 ? plain.length : i+b;
+    CTX[id] = plain.slice(a, b).replace(/^[“”‘’：]+/, "");
+  });
+});
+let cur = null;
+function draw(){
+  const left = KEYS.filter(k => !S.done[k]);
+  $("fdone").textContent = KEYS.length - left.length;
+  ["fyes","fno"].forEach(id => $(id).hidden = true); $("fflip").hidden = false;
+  $("fpy").textContent = ""; $("fm").textContent = "";
+  if(!left.length){ $("fw").textContent = "全记熟了"; $("fctx").textContent = ""; $("fflip").textContent = "重新来过"; cur = null; return; }
+  $("fflip").textContent = "翻面看释义";
+  let k; do{ k = left[Math.floor(Math.random()*left.length)]; }while(left.length>1 && k===cur);
+  cur = k; $("fw").textContent = word(k); $("fctx").textContent = "「" + (CTX[k]||"") + "」";
+}
+$("fflip").onclick = () => {
+  if(!cur){ S.done = {}; save(); draw(); return; }
+  const n = N[cur]; $("fpy").textContent = n.py || ""; $("fm").textContent = n.m + (n.tag ? "（"+n.tag+"）" : "");
+  $("fflip").hidden = true; $("fyes").hidden = false; $("fno").hidden = false;
+};
+$("fyes").onclick = () => { S.done[cur] = 1; save(); draw(); };
+$("fno").onclick = draw;
+
+Object.entries(S.pick).forEach(([i,j]) => { if(HUI[i]) choose(+i, j); });
+$("got").textContent = Object.keys(S.got).filter(k=>N[k]&&!N[k].bu).length;
+tally(); draw();
+</script>
+</body>
+</html>
