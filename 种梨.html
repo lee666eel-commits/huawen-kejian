@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>种梨·梨市三岔路</title>
+<meta name="description" content="蒲松龄《种梨》统考复习：五回剧情里选你的路——吝啬的卖梨人、旁观者，还是打抱不平的道士；注释、翻译、统考课内文言6%一次练齐。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap&text=%E7%A7%8D%E6%A2%A8%E8%AE%A8%E5%8A%9D%E7%BD%AE%E6%A0%B8%E6%BB%A1%E6%A0%91%E7%9C%9F%E7%9B%B8%E5%BC%82%E5%8F%B2%E6%B0%8F%E6%9B%B0%E8%80%83%E5%9C%BA%E6%B3%A8%E9%87%8A%E7%BB%93%E5%B1%80">
+<style>
+/* 版式：一条市集长卷，五回剧情由上而下推进；直排只用在标题、印章、回目，可点的正文一律横排 */
+:root{
+  --paper:#eef0e3;      /* 梨白纸：带一点青的生宣 */
+  --paper-2:#e3e7d4;
+  --ink:#22251f;
+  --ink-2:#555b4c;
+  --line:#c8cdb5;
+  --zhu:#a5332a;        /* 朱砂：印章、注码、采分点 */
+  --pear:#b8962c;       /* 梨黄：卖梨人 */
+  --mist:#5c6a76;       /* 灰青：旁观者 */
+  --qing:#2c6b57;       /* 道袍青：道士 */
+  --card:#f7f8f0;
+  --hl:rgba(184,150,44,.22);
+  --serif:"Noto Serif SC","Songti SC","STSong","SimSun",serif;
+  --brush:"Ma Shan Zheng","Noto Serif SC","STKaiti","KaiTi",serif;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC",sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#1a1c17;--paper-2:#23261f;--ink:#e6e6d6;--ink-2:#a9ae99;--line:#3a3e33;
+  --zhu:#e0685b;--pear:#d9b955;--mist:#9aaab8;--qing:#6cbfa2;--card:#20231d;--hl:rgba(217,185,85,.2);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#1a1c17;--paper-2:#23261f;--ink:#e6e6d6;--ink-2:#a9ae99;--line:#3a3e33;
+  --zhu:#e0685b;--pear:#d9b955;--mist:#9aaab8;--qing:#6cbfa2;--card:#20231d;--hl:rgba(217,185,85,.2);color-scheme:dark}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:17px;line-height:1.85;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+.wrap{max-width:680px;margin:0 auto}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--zhu);outline-offset:2px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{text-wrap:pretty}
+
+/* 顶栏：注释收集＋三条路计数 */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);border-bottom:1px solid var(--line);
+  display:flex;gap:14px;align-items:center;justify-content:space-between;padding:8px 0;font-family:var(--sans);font-size:13px;color:var(--ink-2)}
+.bar b{color:var(--ink);font-variant-numeric:tabular-nums}
+.paths{display:flex;gap:10px}
+.paths span{display:inline-flex;align-items:center;gap:4px}
+.dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+.s{--c:var(--pear)}.w{--c:var(--mist)}.d{--c:var(--qing)}
+.dot{background:var(--c)}
+
+/* 卷首 */
+.hero{display:flex;gap:18px;padding:34px 0 18px;align-items:flex-start}
+.title-v{writing-mode:vertical-rl;font-family:var(--brush);font-size:84px;line-height:1;letter-spacing:.08em;color:var(--ink);flex:none}
+.hero-body{min-width:0;flex:1}
+.byline{font-size:14px;color:var(--ink-2);margin:0 0 10px}
+.hero-side{display:flex;flex-direction:column;align-items:center;gap:14px;flex:none}
+.seal{writing-mode:vertical-rl;width:58px;height:58px;border:2.5px solid var(--zhu);color:var(--zhu);
+  font-family:var(--serif);font-weight:900;font-size:21px;line-height:26px;text-align:center;padding:2px;border-radius:4px;letter-spacing:0}
+.lead{margin:0 0 14px}
+.roles{display:grid;gap:8px;margin:12px 0 4px}
+.role{display:flex;flex-direction:column;padding:2px 0}
+.role b::before{content:"";display:inline-block;width:.7em;height:.7em;background:var(--c);border-radius:2px;margin-right:.45em;vertical-align:.05em}
+.role span{padding-left:1.15em}
+.role b{color:var(--c);white-space:nowrap}
+.role span{font-size:15px;color:var(--ink-2)}
+.exam-note{font-family:var(--sans);font-size:13.5px;color:var(--ink-2);border:1px dashed var(--line);border-radius:8px;padding:10px 12px;margin:16px 0 0;line-height:1.7}
+.exam-note b{color:var(--zhu)}
+
+/* 回 */
+.hui{padding:34px 0 8px;border-top:1px solid var(--line)}
+.hui-head{display:flex;gap:12px;align-items:flex-end;margin-bottom:14px}
+.hui-no{writing-mode:vertical-rl;font-size:14px;letter-spacing:.2em;color:var(--zhu);border-left:1px solid var(--zhu);padding-left:6px;line-height:1.2}
+.hui-title{font-family:var(--brush);font-size:44px;line-height:1}
+.hui-sub{font-family:var(--sans);font-size:13px;color:var(--ink-2);margin-left:auto;text-align:right}
+
+.yuan{font-size:19px;line-height:2.15;margin:0 0 6px;text-indent:2em;letter-spacing:.02em}
+.n{border:0;background:none;padding:0;color:inherit;font:inherit;letter-spacing:inherit;
+  border-bottom:1.5px dotted var(--zhu);line-height:1.2}
+.n sup{color:var(--zhu);font-family:var(--sans);font-size:.55em;margin-left:1px}
+.n.got{background:var(--hl);border-bottom-style:solid}
+.n.bu{border-bottom-color:var(--ink-2)}
+.n.bu sup{color:var(--ink-2)}
+.tip{font-family:var(--sans);font-size:12.5px;color:var(--ink-2);margin:0 0 18px}
+
+.box{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 14px 12px;margin:14px 0}
+.box h3{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:.08em;color:var(--ink-2);margin-bottom:6px;display:flex;justify-content:space-between;gap:8px}
+.box h3 em{font-style:normal;color:var(--zhu)}
+.key{font-size:18px;font-weight:600;margin:4px 0 10px}
+textarea{width:100%;min-height:64px;font:inherit;font-size:16px;line-height:1.7;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);resize:vertical}
+.btn{border:1px solid var(--ink);background:transparent;border-radius:999px;padding:5px 16px;font-family:var(--sans);font-size:14px;margin-top:8px}
+.btn.solid{background:var(--ink);color:var(--paper)}
+.ans{margin-top:10px;border-top:1px dashed var(--line);padding-top:10px}
+.ans p{margin:0 0 8px}
+.pt{color:var(--zhu);font-weight:600;background:none;border-bottom:1.5px solid var(--zhu)}
+.chk{display:flex;gap:8px;align-items:flex-start;font-family:var(--sans);font-size:14px;line-height:1.6;margin:6px 0}
+.chk input{margin-top:4px;accent-color:var(--zhu);flex:none;width:16px;height:16px}
+.src{font-family:var(--sans);font-size:12px;color:var(--ink-2)}
+
+/* 抉择 */
+.ask{font-size:17px;margin:4px 0 10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--paper);border-radius:10px;padding:10px 12px 10px 14px;line-height:1.7;
+  position:relative;transition:border-color .2s,background .2s}
+.opt::before{content:"";position:absolute;left:0;top:10px;bottom:10px;width:3px;border-radius:2px;background:var(--c);opacity:.0;transition:opacity .2s}
+.opt .who{display:block;font-family:var(--sans);font-size:12px;color:var(--c);letter-spacing:.06em;opacity:0;height:0;transition:opacity .2s}
+.chosen .opt{opacity:.5}
+.chosen .opt.on{opacity:1;border-color:var(--c);background:var(--card)}
+.chosen .opt::before,.chosen .opt .who{opacity:1}
+.chosen .opt .who{height:auto;margin-bottom:2px}
+.echo{margin-top:12px;padding:10px 12px;border-radius:8px;background:var(--paper-2);font-size:15.5px;line-height:1.8}
+.echo b{color:var(--zhu);font-weight:600}
+
+/* 异史氏曰 */
+.pi{border:1.5px solid var(--zhu);border-radius:4px;padding:16px 14px;position:relative;margin-top:8px}
+.pi .yuan{margin:0}
+.pi-label{position:absolute;top:-12px;left:12px;background:var(--paper);color:var(--zhu);font-size:14px;padding:0 6px;letter-spacing:.2em}
+
+.result{margin:18px 0;padding:16px;border-radius:10px;border:2px solid var(--c,var(--line));background:var(--card)}
+.result h3{font-size:22px;color:var(--c,var(--ink));margin-bottom:6px}
+.result p{margin:0 0 8px}
+.zhuti{font-size:16px;border-block:1px solid var(--zhu);padding:10px 4px;margin:12px 0}
+
+/* 考场卷面 */
+.paper-scroll{overflow-x:auto;margin:8px 0 12px}
+.juan{font-size:16px;line-height:2;white-space:pre;font-family:var(--serif);background:var(--card);border:1px solid var(--line);padding:12px 12px 12px 0;display:inline-block;min-width:100%}
+.juan .ln{display:inline-block;width:2.4em;text-align:right;padding-right:.6em;color:var(--ink-2);font-family:var(--sans);font-size:12px}
+.juan b{font-weight:900}
+.q{margin:14px 0}
+.q .qt{font-weight:600}
+.q .pct{font-family:var(--sans);font-size:13px;color:var(--ink-2)}
+.score{font-family:var(--sans);font-size:15px;margin:10px 0;padding:10px 12px;border-radius:8px;background:var(--paper-2)}
+.score b{font-size:22px;color:var(--zhu);font-variant-numeric:tabular-nums}
+.syn{display:grid;gap:8px;margin:8px 0}
+.syn details{border:1px solid var(--line);border-radius:8px;padding:6px 12px;background:var(--paper)}
+.syn summary{cursor:pointer}
+.syn p{margin:6px 0 4px;font-size:15.5px}
+
+/* 注释卡 */
+.flash{text-align:center;padding:18px 12px}
+.flash .w{font-size:34px;font-weight:900;letter-spacing:.1em;display:block}
+.flash .py{font-family:var(--sans);font-size:14px;color:var(--ink-2);min-height:1.4em}
+.flash .m{min-height:3.4em;font-size:16px;margin:8px 0}
+.flash .ctx{font-size:14px;color:var(--ink-2)}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+
+/* 注释浮层 */
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--card);border-top:2px solid var(--zhu);
+  padding:14px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));
+  box-shadow:0 -8px 24px rgba(0,0,0,.12);transform:translateY(105%);transition:transform .22s ease}
+.sheet.open{transform:none}
+.sheet-in{max-width:680px;margin:0 auto;position:relative}
+.sheet .w{font-size:26px;font-weight:900}
+.sheet .py{font-family:var(--sans);color:var(--ink-2);margin-left:8px}
+.sheet .m{margin:4px 0 0;font-size:17px}
+.sheet .tag{display:inline-block;font-family:var(--sans);font-size:12px;border:1px solid var(--zhu);color:var(--zhu);border-radius:4px;padding:0 6px;margin-top:6px}
+.sheet .x{position:absolute;right:0;top:0;border:0;background:none;font-size:22px;line-height:1;color:var(--ink-2);padding:4px 6px}
+footer{border-top:1px solid var(--line);margin-top:30px;padding:16px 0 120px;font-family:var(--sans);font-size:12.5px;color:var(--ink-2);line-height:1.8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="bar" aria-live="polite">
+  <span>注释 <b id="got">0</b>/38</span>
+  <span class="paths">
+    <span class="s"><i class="dot"></i>卖梨人 <b id="cs">0</b></span>
+    <span class="w"><i class="dot"></i>旁观者 <b id="cw">0</b></span>
+    <span class="d"><i class="dot"></i>道士 <b id="cd">0</b></span>
+  </span>
+</div>
+
+<header class="hero">
+  <div class="hero-side"><h1 class="title-v">种梨</h1><div class="seal" aria-label="印：梨市三岔">梨市三岔</div></div>
+  <div class="hero-body">
+    <p class="byline">蒲松龄《聊斋志异》｜初二上册第二课｜初三统考复习</p>
+    <p class="lead">集市上，一车梨，一个讨梨的道士，一群看热闹的人。故事分五回走完。每一回，你都要选一次：<b>如果你就在那个集市上，你会怎么做？</b></p>
+    <div class="roles">
+      <div class="role s"><b>吝啬的卖梨人</b><span>守住自己的东西</span></div>
+      <div class="role w"><b>旁观者</b><span>站在一旁看，偶尔动嘴，偶尔动手</span></div>
+      <div class="role d"><b>打抱不平的道士</b><span>看不过眼，就出手</span></div>
+    </div>
+    <p class="exam-note">统考丙组文言文 15%＝<b>课内 6%</b>＋课外 9%。2022–2025 年的课内篇每年三题、各 2%，<b>第 3 题都是句子翻译</b>；前两题多考内容理解，常问人物评价、启示或道理（2025 年第 1 题改考词义）。所以每一回都练一句翻译；画了红点线的字点一下就是课本注释，读完五回和尾声，38 条注释就收齐了。最后一关按统考卷面实战。</p>
+  </div>
+</header>
+
+<main id="story"></main>
+
+<section class="hui" id="end">
+  <div class="hui-head"><span class="hui-no">尾声</span><h2 class="hui-title">异史氏曰</h2><span class="hui-sub">第4段｜作者的议论</span></div>
+  <div class="pi"><span class="pi-label">批</span><p class="yuan" id="yishi"></p></div>
+  <p class="tip">「异史氏」就是蒲松龄自己。《聊斋志异》的故事结尾常附这样一段议论，点明写作目的。</p>
+  <div id="result"></div>
+</section>
+
+<section class="hui" id="kaochang">
+  <div class="hui-head"><span class="hui-no">实战</span><h2 class="hui-title">考场</h2><span class="hui-sub">仿 2022–2025 统考丙组<br>课内文言 6%</span></div>
+  <p>卷面照统考格式：节选正文、标行号，受考句用粗体。先写，再对照采分点给自己打分。</p>
+  <div class="paper-scroll"><div class="juan" id="juan"></div></div>
+  <p class="src">（蒲松龄《种梨》节选）　3 题全答</p>
+
+  <div class="q">
+    <p class="qt">1. 试概述卖梨的乡下人如何发现自己受了道士戏弄。<span class="pct">（2%）</span></p>
+    <textarea id="q1" aria-label="第1题作答"></textarea>
+  </div>
+  <div class="q">
+    <p class="qt">2. 卖梨的乡下人代表哪一类人？他的遭遇给了我们什么启示？<span class="pct">（2%）</span></p>
+    <textarea id="q2" aria-label="第2题作答"></textarea>
+  </div>
+  <div class="q">
+    <p class="qt">3. 把以下句子译成白话文。<span class="pct">（2%）</span></p>
+    <p><b id="q3s"></b><span id="q3l"></span></p>
+    <textarea id="q3" aria-label="第3题作答"></textarea>
+  </div>
+  <button class="btn solid" id="showKey">交卷，对照采分点</button>
+  <div id="key" hidden>
+    <div class="box">
+      <h3>第 1 题<em>2%</em></h3>
+      <p>他回头看车，发现梨子全没了，这才明白道士分给众人的都是自己的梨；又发现车把被新砍断，追到墙角找到断了的车把，才知道道士砍下的梨树就是自己的车把。</p>
+      <label class="chk"><input type="checkbox" data-v="1">写出「梨已空，分给众人的是自己的梨」</label>
+      <label class="chk"><input type="checkbox" data-v="1">写出「车把被砍断，梨树就是车把」</label>
+    </div>
+    <div class="box">
+      <h3>第 2 题<em>2%</em></h3>
+      <p>他代表为富不仁、吝啬计较而又愚蠢的人。他的遭遇启示我们，做人应有乐善好施、守望相助的美德。</p>
+      <label class="chk"><input type="checkbox" data-v="1">答出一类人：吝啬计较、为富不仁（愚蠢）</label>
+      <label class="chk"><input type="checkbox" data-v="1">答出启示：乐善好施、守望相助</label>
+      <p class="src">启示依据：课文中心思想（教师手册）。答案写成完整句子，别只列词语。</p>
+    </div>
+    <div class="box">
+      <h3>第 3 题<em>2%</em></h3>
+      <p>乡下人也<span class="pt">夹杂站在人群里</span>，<span class="pt">伸长脖子注意看</span>，竟然<span class="pt">忘记了自己的生意</span>。</p>
+      <label class="chk"><input type="checkbox" data-v="0.5">「杂立众中」＝夹杂站在人群里</label>
+      <label class="chk"><input type="checkbox" data-v="1">「引领注目」＝伸长脖子注视（引领：伸长脖子）</label>
+      <label class="chk"><input type="checkbox" data-v="0.5">「竟忘其业」＝竟然忘了自己的生意</label>
+    </div>
+    <div class="score">自评得分：<b id="sc">0</b> / 6%</div>
+    <p class="src">采分分配是练习用的参考，统考原卷不附答案。</p>
+  </div>
+
+  <div class="box">
+    <h3>附加题：同义词连连看<em>仿 2025 第 1 题</em></h3>
+    <p class="src" style="margin:0 0 6px">2025 年统考问「写出“汝”的意思」「文中哪个词与“汝”意思相同」。《种梨》里也藏着几组同义词，先想，再点开。</p>
+    <div class="syn">
+      <details><summary>「丐于车前」的「丐」，异史氏曰里哪个字与它意思相同？</summary><p>「乞」（良朋<b>乞</b>米）。都是讨、乞求。</p></details>
+      <details><summary>「俄成树」的「俄」，文中还有哪些词也表示时间很短？</summary><p>「倏」（倏而花，倏而实）。手册把「渐」「俄」「倏」并列，说明梨树长得快。「顷刻向尽」的「顷刻」也指时间很短，不过写的是分梨分得快。</p></details>
+      <details><summary>「乡人怒」的「怒」，文中还有哪些词也表示生气？</summary><p>「心大愤恨」的「愤恨」、「则怫然」的「怫然」、「则又忿然」的「忿然」。</p></details>
+      <details><summary>陷阱：「货梨于市」的「货」和「出钱市一枚」的「市」，意思一样吗？</summary><p>正好相反。「货」是<b>卖</b>，「市」是<b>买</b>，两个都是名词活用作动词。同一句里的「于市」的「市」又是名词：市场。</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="hui" id="zhushi">
+  <div class="hui-head"><span class="hui-no">温习</span><h2 class="hui-title">注释</h2><span class="hui-sub">38 条课本注释<br>抽卡自测</span></div>
+  <div class="box flash">
+    <span class="w" id="fw"></span>
+    <div class="py" id="fpy"></div>
+    <div class="ctx" id="fctx"></div>
+    <div class="m" id="fm"></div>
+    <div class="row">
+      <button class="btn" id="fflip">翻面看释义</button>
+      <button class="btn" id="fyes" hidden>记得</button>
+      <button class="btn" id="fno" hidden>再来一次</button>
+    </div>
+    <p class="src" style="margin-top:10px">已记熟 <b id="fdone">0</b>/38　·　「记得」的卡不再抽到</p>
+  </div>
+</section>
+
+<footer>
+  原文与注释依独中初中华文课本初二上册第二课《种梨》；译文要点、启示依教师手册。标「补」的注释是课本以外的补充。<br>
+  设计：林子策（Lim Zi Ce）｜南华独中华文组。
+</footer>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="false" aria-labelledby="sw">
+  <div class="sheet-in">
+    <button class="x" id="sx" aria-label="关闭">×</button>
+    <span class="w" id="sw"></span><span class="py" id="spy"></span>
+    <p class="m" id="sm"></p>
+    <span class="tag" id="stag" hidden></span>
+  </div>
+</div>
+
+<script>
+// 课本注释 38 条（p=段落编号, n=课本注码）；bu=课本以外的补充，不计入收集
+const N = {
+  "货":{p:1,n:1,m:"卖。",tag:"名词活用：货品 → 卖"},
+  "破巾絮衣":{p:1,n:2,m:"戴着破头巾，穿着粗棉衣。"},
+  "咄":{p:1,n:3,py:"duō",m:"呵斥。"},
+  "老衲":{p:1,n:4,py:"nà",m:"佛教戒律规定，僧尼衣服应用人们遗弃的破布碎片缝缀而成，称“百衲衣”。僧人自称“老衲”，此处借作道士自称。"},
+  "止":{p:1,n:5,m:"只是。"},
+  "居士":{p:1,n:6,m:"在家修道的人。这里是道士对卖梨者的敬称。"},
+  "置":{p:1,n:7,m:"购置。这里指施舍。"},
+  "肆中佣保者":{p:2,n:1,py:"sì · yōng",m:"店铺里雇用的伙计。肆：店铺。佣：雇用。"},
+  "喋聒":{p:2,n:2,py:"diéguō",m:"啰嗦吵闹。"},
+  "市":{p:2,n:3,m:"购买。",tag:"名词活用：市场 → 买"},
+  "或":{p:2,n:4,m:"有人。"},
+  "掬":{p:2,n:5,py:"jū",m:"双手捧着。"},
+  "啖":{p:2,n:6,py:"dàn",m:"吃。"},
+  "镵":{p:2,n:7,py:"chán",m:"掘土工具。"},
+  "坎":{p:2,n:8,py:"kǎn",m:"掘坑。",tag:"名词活用：坑洞 → 挖坑"},
+  "汤":{p:2,n:9,m:"热水。"},
+  "沸瀋":{p:2,n:10,py:"shěn",m:"滚烫的汤汁。瀋：汁。"},
+  "攒":{p:2,n:11,py:"cuán",m:"聚集。"},
+  "勾萌":{p:2,n:12,m:"弯曲的幼芽。勾：弯曲。"},
+  "俄":{p:2,n:13,m:"不久，一会儿。"},
+  "扶苏":{p:2,n:14,m:"同“扶疏”，枝叶茂盛的样子。"},
+  "即":{p:2,n:15,m:"到。指爬到树上。"},
+  "向":{p:2,n:16,m:"将近。"},
+  "丁丁":{p:2,n:17,py:"zhēngzhēng",m:"伐木声。"},
+  "俵":{p:3,n:1,py:"biào",m:"分给。"},
+  "靶":{p:3,n:2,py:"bà",m:"柄。这里指车把。"},
+  "迹":{p:3,n:3,m:"搜寻。",tag:"名词活用：踪迹 → 追寻……踪迹"},
+  "垣":{p:3,n:4,py:"yuán",m:"墙。"},
+  "粲然":{p:3,n:5,py:"càn",m:"露齿笑的样子。"},
+  "愦愦":{p:3,n:6,py:"kuìkuì",m:"昏庸，糊涂。"},
+  "憨状可掬":{p:3,n:7,m:"痴傻的情态充溢于外，好像可以用双手捧取一样。憨：傻气。"},
+  "有以":{p:3,n:8,m:"有原因。"},
+  "素封":{p:3,n:9,m:"没有官爵封地而十分富有的人。"},
+  "怫然":{p:3,n:10,py:"fú",m:"愤怒的样子。"},
+  "茕独":{p:3,n:11,py:"qióng",m:"孤独无依的人。"},
+  "较尽锱铢":{p:3,n:12,py:"zīzhū",m:"极微细的钱财也要彻底计较。锱、铢：古代极小的重量单位，借指微小的财利。"},
+  "淫博":{p:3,n:13,m:"纵欲和赌博。"},
+  "赎命不遑":{p:3,n:14,m:"赎命也来不及。不遑：来不及。"},
+  // 补
+  "倏":{bu:1,m:"很快，忽然。手册译作「一会儿」。手册把「渐」「俄」「倏」并列，写梨树长得快。"},
+  "花":{bu:1,m:"开花。",tag:"名词活用：花朵 → 开花"},
+  "实":{bu:1,m:"结果实。",tag:"名词活用：果实 → 结果"},
+  "引领":{bu:1,m:"伸长脖子。领：脖子。"},
+  "顷囊":{bu:1,m:"课本作「顷」，通「倾」。倾囊：把钱袋里的钱全倒出来。"}
+};
+const CIRC = "⓪①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯⑰";
+
+// 五回：{词} 标注释位置
+const HUI = [
+ {no:"第一回",t:"讨梨",sub:"第1段",
+  y:["有乡人{货}梨于市，颇甘芳，价腾贵。有道士{破巾絮衣}，丐于车前。乡人{咄}之亦不去。乡人怒，加以叱骂。道士曰：“一车数百颗，{老衲}{止}丐其一，于{居士}亦无大损，何怒为？”"],
+  key:"一车数百颗，老衲止丐其一，于居士亦无大损，何怒为？",
+  tr:"一车几百个梨子，老衲<span class=pt>只是乞讨其中一个</span>，<span class=pt>对居士你也没多大损失</span>，<span class=pt>为什么生气呢</span>？",
+  pts:["「止」＝只是；「丐」＝乞讨","「于居士」＝对居士你","「何怒为」＝为什么生气呢（反问语气要译出）"],
+  ask:"一个戴破头巾、穿粗棉衣的道士赖在梨车前讨梨，骂也骂不走。你是——",
+  o:[
+   {r:"d",x:"讨梨的那个。「一车几百颗，我只要一颗，对你也没多大损失，何必生气？」",e:"原文的道士正是这么说的，不急不躁，还尊称对方<b>居士</b>。这个敬称安在一个连一颗梨都不肯给的人身上，读起来就带着讽刺。"},
+   {r:"s",x:"推车的那个。「梨是我一颗颗挑来卖的。今天给你一颗，明天整条街都来讨。」",e:"原文的乡人先<b>咄</b>，再<b>怒</b>，再<b>叱骂</b>，三步升级，吝啬的样子几笔就画出来了。不过你的理由不算全无道理，手册也收「我一车梨子不是白捡来的」这种回答，只要说得出理由。"},
+   {r:"w",x:"路过的人。「有热闹看了。」停下脚步，不说话。",e:"围观的人越聚越多。下一回，这些<b>观者</b>就要开口了。"}
+  ]},
+ {no:"第二回",t:"劝置",sub:"第1–2段",
+  y:["观者劝{置}劣者一枚令去，乡人执不肯。","{肆中佣保者}，见{喋聒}不堪，遂出钱{市}一枚，付道士。"],
+  key:"观者劝置劣者一枚令去，乡人执不肯。",
+  tr:"旁边围观的人劝乡下人<span class=pt>施舍一个差的梨</span>给道士，<span class=pt>让他离开</span>，乡下人却<span class=pt>坚决</span>不肯。",
+  pts:["「置劣者一枚」＝施舍一个差的梨（置：施舍）","「令去」＝让他离开","「执」＝坚持、坚决"],
+  ask:"吵了半天，没完没了。站在一旁的你——",
+  o:[
+   {r:"w",x:"「吵死了。」劝两句没用，干脆换条路走，免得惹事。",e:"原文劝的<b>观者</b>没有人掏钱，出钱的是下一个出场的伙计。你和那些观者站在一起。"},
+   {r:"d",x:"自己掏钱买一颗，塞给道士，了结这件事。",e:"原文里做这件事的是<b>肆中佣保者</b>，店里的伙计。他和这件事不相干，也不富有。手册说这是<b>反衬</b>：连伙计都肯掏钱，更显出卖梨人的吝啬。你选了打抱不平的路，伙计也是。"},
+   {r:"s",x:"「挑个最差的给他？不行。劣梨也是梨，也是钱。」",e:"原文：乡人<b>执不肯</b>。手册问「哪一句最能表现卖梨人吝啬」，答案就是这一句。"}
+  ]},
+ {no:"第三回",t:"种核",sub:"第2段",
+  y:["道士拜谢，谓众曰：“出家人不解吝惜。我有佳梨，请出供客。”{或}曰：“既有之，何不自食？”曰：“我特需此核作种。”于是{掬}梨大{啖}。且尽，把核于手，解肩上{镵}，{坎}地深数寸，纳之而覆以土。向市人索{汤}沃灌。好事者于临路店索得{沸瀋}，道士接浸坎处。"],
+  key:"坎地深数寸，纳之而覆以土。",
+  tr:"<span class=pt>挖了一个</span>几寸深的<span class=pt>坑</span>，<span class=pt>把梨核放进去</span>，再<span class=pt>盖上土</span>。",
+  pts:["「坎」＝掘坑（名词活用作动词）","「纳之」＝把它（梨核）放进去","「覆以土」＝用土盖上"],
+  ask:"道士说要用梨核种梨，还向街上的人讨热水浇。热水浇种子，不就烫死了？你——",
+  o:[
+   {r:"s",x:"「装神弄鬼。」嘴上不屑，脚却不由自主往人群里挤。",e:"第五回会揭晓：这时卖梨人<b>亦杂立众中，引领注目，竟忘其业</b>。最该看好梨车的人，看得最入神。"},
+   {r:"w",x:"跑去路边店讨来一碗滚烫的汤汁：「我倒要看你怎么变！」",e:"原文：这是<b>好事者</b>。他不帮谁，只想让戏更好看。这是旁观者的另一副面孔。手册说，热水浇种正是道士戏法的第一奇。"},
+   {r:"d",x:"不跟人争谁对谁错，换一种办法，让对方自己看明白。",e:"道士拜谢之后，对众人说的头一句是<b>出家人不解吝惜</b>，把「吝惜」两个字原封不动还给了卖梨人。手册说这番话暗讽了乡下人的吝啬，也把一街的人都吸引过来看他施法。"}
+  ]},
+ {no:"第四回",t:"满树",sub:"第2段",
+  y:["万目{攒}视，见有{勾萌}出，渐大；{俄}成树，枝叶{扶苏}；{倏}而{花}，倏而{实}，硕大芳馥，累累满树。道士乃{即}树头摘赐观者，顷刻{向}尽。已，乃以镵伐树，{丁丁}良久，方断；带叶荷肩头，从容徐步而去。"],
+  key:"倏而花，倏而实，硕大芳馥，累累满树。",
+  tr:"一会儿就<span class=pt>开花</span>了，一会儿就<span class=pt>结果</span>了，果实又大又香，<span class=pt>密密麻麻挂满了树</span>。",
+  pts:["「花」＝开花（名词活用作动词）","「实」＝结果实（名词活用作动词）","「累累满树」＝密密麻麻挂满树上"],
+  ask:"道士爬上树，把梨一颗颗分给围观的人。一颗梨递到你面前——",
+  o:[
+   {r:"w",x:"接过来就吃，白给的不吃白不吃。",e:"原文：<b>摘赐观者，顷刻向尽</b>。满树的梨一下子就将近分光了，围观的人只顾着接。"},
+   {r:"d",x:"先不吃，回头看了一眼那辆梨车。",e:"满街的人里，你最早看穿。原文的道士伐树、扛树，<b>从容徐步而去</b>。他什么都知道，所以一点也不慌。"},
+   {r:"s",x:"「白给的？给我一颗！」咬一口：真甜，跟我卖的梨一样甜……",e:"故事最后才揭晓，这满树的梨就是他自己的。手册说这种安排让人「看完表演，始知真相」，很有戏剧效果。"}
+  ]},
+ {no:"第五回",t:"真相",sub:"第3段",
+  y:["初，道士作法时，乡人亦杂立众中，{引领}注目，竟忘其业。道士既去，始顾车中，则梨已空矣。方悟适所{俵}散，皆己物也。又细视车上一{靶}亡，是新凿断者。心大愤恨。急{迹}之，转过墙隅，则断靶弃{垣}下，始知所伐梨本，即是物也。道士不知所在。一市{粲然}。"],
+  key:"方悟适所俵散，皆己物也。",
+  tr:"<span class=pt>这才明白</span>道士<span class=pt>刚才分给</span>众人的，<span class=pt>都是自己的东西</span>。",
+  pts:["「方悟」＝这才明白","「适」＝刚才；「俵散」＝分发","「皆己物也」＝都是自己的东西（梨）"],
+  ask:"道士走远了，满街的人都在笑。卖梨人站在空车旁边。你——",
+  o:[
+   {r:"d",x:"走过去，对他说：「下回给人一颗就好了。」",e:"原文里没有一个人这样做。下一段，异史氏换了一种说法，骂的是所有舍不得济人危难的人，而且说得重得多。"},
+   {r:"s",x:"「我要去报官！」追过墙角，只捡回一截断车把。",e:"原文：<b>心大愤恨，急迹之</b>，可<b>道士不知所在</b>。手册给课本练习 6 的参考答案里，卖梨人也是这样喊的：「气死我了！……我要告官去！」"},
+   {r:"w",x:"跟着大家一起笑。",e:"原文：<b>一市粲然</b>。笑的人里，有刚刚白吃了他梨的人。想一想：看别人吃亏而笑，算不算旁观者的又一副面孔？"}
+  ]}
+];
+const YISHI = "异史氏曰：“乡人{愦愦}，{憨状可掬}，其见笑于市人，{有以}哉。每见乡中称{素封}者，良朋乞米，则{怫然}，且计曰：‘是数日之资也。’或劝济一危难，饭一{茕独}，则又忿然，又计曰：‘此十人、五人之食也。’甚而父子兄弟，{较尽锱铢}。及至{淫博}迷心，则{顷囊}不吝；刀锯临颈，则{赎命不遑}。诸如此类，正不胜道，蠢尔乡人，又何足怪。”";
+
+const RES = {
+ s:{name:"吝啬的卖梨人",p:["你守得住自己的东西。这不全是错，手册也接受「一车梨子不是白捡来的」这种回答。","可是在故事里，守得最紧的人丢得最多：一颗劣梨不肯给，最后一车梨和一根车把全没了。异史氏笑他<b>愦愦</b>（糊涂），笑的是只算小账、不算大账。他还往下说：这种人在朋友乞米时算「是数日之资也」，在赌桌上却<b>顷囊不吝</b>。"]},
+ w:{name:"旁观者",p:["你看得最清楚，也最安全。可是旁观者有好几副面孔：动嘴劝的<b>观者</b>、掏钱的<b>伙计</b>、讨热汤的<b>好事者</b>，还有最后<b>一市粲然</b>的满街人。你是哪一个？","蒲松龄让一个不相干、也不富有的伙计站出来，好像在问：你明明可以出手，为什么只看？"]},
+ d:{name:"打抱不平的道士",p:["你看不过眼就出手。痛快，但手册也提醒：如果没有异史氏这一段，道士「丐梨不果，就施法整人，未免卑鄙」。","读完最后一段才明白，蒲松龄借道士的戏法，罚的不只是一个卖梨人，而是所有「良朋乞米，则怫然」的人。打抱不平，出手之前也要想清楚：为谁出手，出到什么分寸。"]}
+};
+const ZHUTI = "通过记叙卖梨者不肯施舍，遭道士作法戏弄的故事，讽刺了为富不仁、吝啬与愚蠢的人，说明做人应有乐善好施、守望相助的美德。";
+
+// 统考卷面节选：【】为受考粗体句
+const JUAN = [
+ "道士乃即树头摘赐观者，顷刻向尽。已，乃以镵伐树，丁丁良久，方断；带叶荷肩头，从容徐步而去。",
+ "初，道士作法时，【乡人亦杂立众中，引领注目，竟忘其业】。道士既去，始顾车中，则梨已空矣。方悟适所俵散，皆己物也。又细视车上一靶亡，是新凿断者。心大愤恨。急迹之，转过墙隅，则断靶弃垣下，始知所伐梨本，即是物也。道士不知所在。一市粲然。",
+ "异史氏曰：“乡人愦愦，憨状可掬，其见笑于市人，有以哉。每见乡中称素封者，良朋乞米，则怫然，且计曰：‘是数日之资也。’……”"
+];
+
+/* ---------- 状态 ---------- */
+const S = {got:{}, pick:{}, done:{}};
+try{ Object.assign(S, JSON.parse(localStorage.getItem("zhongli")||"{}")); }catch(e){}
+const save = () => { try{ localStorage.setItem("zhongli", JSON.stringify(S)); }catch(e){} };
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+
+function mark(text){
+  return esc(text).replace(/\{([^}]+)\}/g, (_, w) => {
+    const n = N[w];
+    const sup = n.bu ? "补" : CIRC[n.n];
+    return `<button class="n${n.bu?" bu":""}${S.got[w]?" got":""}" data-w="${w}">${w}<sup>${sup}</sup></button>`;
+  });
+}
+
+/* ---------- 五回 ---------- */
+$("story").innerHTML = HUI.map((h,i) => `
+<section class="hui" id="h${i+1}">
+  <div class="hui-head"><span class="hui-no">${h.no}</span><h2 class="hui-title">${h.t}</h2><span class="hui-sub">${h.sub}</span></div>
+  ${h.y.map(p => `<p class="yuan">${mark(p)}</p>`).join("")}
+  ${i===0?`<p class="tip">点画线的字看注释。红色编号＝课本注释，灰色「补」＝课本以外的补充。</p>`:""}
+  <div class="box">
+    <h3>翻译练习<em>统考 2%</em></h3>
+    <p class="key">${h.key}</p>
+    <textarea id="t${i}" aria-label="${h.no}翻译" placeholder="先自己译一遍，再对照。"></textarea>
+    <button class="btn" data-tr="${i}">对照采分点</button>
+    <div class="ans" id="a${i}" hidden>
+      <p>${h.tr}</p>
+      ${h.pts.map(p => `<label class="chk"><input type="checkbox">${p}</label>`).join("")}
+      <p class="src">句子要通顺；红色划线的词是采分点，译漏一个就丢分。</p>
+    </div>
+  </div>
+  <div class="box">
+    <h3>此刻，你会怎么做？<em>选一条路</em></h3>
+    <p class="ask">${h.ask}</p>
+    <div class="opts" id="o${i}">
+      ${h.o.map((o,j) => `<button class="opt ${o.r}" data-h="${i}" data-o="${j}"><span class="who">${RES[o.r].name}</span>${o.x}</button>`).join("")}
+    </div>
+    <div class="echo" id="e${i}" hidden></div>
+  </div>
+</section>`).join("");
+$("yishi").innerHTML = mark(YISHI);
+
+function choose(i, j){
+  S.pick[i] = j; save();
+  const box = $("o"+i); box.classList.add("chosen");
+  box.querySelectorAll(".opt").forEach((b,k) => b.classList.toggle("on", k===j));
+  const e = $("e"+i); e.hidden = false; e.innerHTML = HUI[i].o[j].e;
+  tally();
+}
+function tally(){
+  const c = {s:0,w:0,d:0};
+  Object.entries(S.pick).forEach(([i,j]) => c[HUI[i].o[j].r]++);
+  $("cs").textContent=c.s; $("cw").textContent=c.w; $("cd").textContent=c.d;
+  const n = c.s+c.w+c.d, r = $("result");
+  if(n < HUI.length){ r.innerHTML = `<div class="result"><p>你已选了 ${n}/5 回。五回都选完，这里会告诉你走的是哪一条路。</p></div>`; return; }
+  const max = Math.max(c.s,c.w,c.d), top = ["s","w","d"].filter(k => c[k]===max);
+  r.innerHTML = top.map(k => `<div class="result ${k}"><p class="src">五回之中，你有 ${c[k]} 回走了这条路</p><h3>${RES[k].name}</h3>${RES[k].p.map(p=>`<p>${p}</p>`).join("")}</div>`).join("") +
+    `<p>三条路，故事里都有人走过。蒲松龄要你记住的是这一句：</p><p class="zhuti">${ZHUTI}</p><p class="src">课文中心思想（教师手册）。统考问「启示」时，回扣这一句。</p>`;
+}
+
+/* ---------- 注释浮层 ---------- */
+const sheet = $("sheet");
+function openNote(w){
+  const n = N[w];
+  $("sw").textContent = w; $("spy").textContent = n.py || "";
+  $("sm").textContent = (n.bu ? "补充：" : `课本注${CIRC[n.n]}：`) + n.m;
+  const t = $("stag"); t.hidden = !n.tag; t.textContent = n.tag || "";
+  sheet.classList.add("open");
+  if(!n.bu && !S.got[w]){ S.got[w]=1; save(); }
+  document.querySelectorAll(`.n[data-w="${w}"]`).forEach(b => b.classList.add("got"));
+  $("got").textContent = Object.keys(S.got).length;
+}
+$("sx").onclick = () => sheet.classList.remove("open");
+document.addEventListener("keydown", e => { if(e.key==="Escape") sheet.classList.remove("open"); });
+
+document.addEventListener("click", e => {
+  const n = e.target.closest(".n"); if(n){ openNote(n.dataset.w); return; }
+  const o = e.target.closest(".opt"); if(o){ choose(+o.dataset.h, +o.dataset.o); return; }
+  const t = e.target.closest("[data-tr]"); if(t){ $("a"+t.dataset.tr).hidden = false; t.hidden = true; return; }
+  if(!e.target.closest("#sheet")) sheet.classList.remove("open");
+});
+
+/* ---------- 考场卷面：每行 18 字，每 3 行标行号 ---------- */
+(function(){
+  const PER = 18; let lines = [], keyLine = 0, keyEnd = 0;
+  JUAN.forEach(p => {
+    let cur = "　　", len = 2, bold = false;
+    for(const ch of p){
+      if(ch==="【"){ bold = true; cur += "<b>"; if(!keyLine) keyLine = lines.length+1; continue; }
+      if(ch==="】"){ bold = false; cur += "</b>"; keyEnd = len ? lines.length+1 : lines.length; continue; }
+      cur += esc(ch); len++;
+      if(len===PER){ lines.push(cur + (bold?"</b>":"")); cur = bold?"<b>":""; len = 0; }
+    }
+    if(len) lines.push(cur);
+  });
+  $("juan").innerHTML = lines.map((l,i) => `<span class="ln">${(i+1)%3===0 ? i+1 : ""}</span>${l}`).join("\n");
+  $("q3s").textContent = "乡人亦杂立众中，引领注目，竟忘其业。";
+  $("q3l").textContent = keyEnd>keyLine ? `（第${keyLine}~${keyEnd}行）` : `（第${keyLine}行）`;
+})();
+$("showKey").onclick = () => { $("key").hidden = false; $("showKey").hidden = true; };
+$("key").addEventListener("change", () => {
+  let s = 0; $("key").querySelectorAll("input:checked").forEach(c => s += +c.dataset.v);
+  $("sc").textContent = s;
+});
+
+/* ---------- 注释抽卡（只抽 38 条课本注释） ---------- */
+const KEYS = Object.keys(N).filter(k => !N[k].bu);
+const CTX = {};
+[...HUI.flatMap(h=>h.y), YISHI].forEach(p => {
+  const plain = p.replace(/[{}]/g,"");
+  (p.match(/\{([^}]+)\}/g)||[]).forEach(m => {
+    const w = m.slice(1,-1); if(CTX[w]) return;
+    const i = plain.indexOf(w), a = Math.max(0, plain.lastIndexOf("，", i-1)+1, plain.lastIndexOf("。", i-1)+1);
+    let b = plain.slice(i).search(/[，。；？！]/); b = b<0 ? plain.length : i+b;
+    CTX[w] = plain.slice(a, b).replace(/^[“”‘’：]+/, "");
+  });
+});
+let cur = null;
+function draw(){
+  const left = KEYS.filter(k => !S.done[k]);
+  $("fdone").textContent = KEYS.length - left.length;
+  ["fyes","fno"].forEach(id => $(id).hidden = true); $("fflip").hidden = false;
+  $("fpy").textContent = ""; $("fm").textContent = "";
+  if(!left.length){ $("fw").textContent = "全记熟了"; $("fctx").textContent = ""; $("fflip").textContent = "重新来过"; cur = null; return; }
+  $("fflip").textContent = "翻面看释义";
+  let k; do{ k = left[Math.floor(Math.random()*left.length)]; }while(left.length>1 && k===cur);
+  cur = k; $("fw").textContent = k; $("fctx").textContent = "「" + (CTX[k]||"") + "」";
+}
+$("fflip").onclick = () => {
+  if(!cur){ S.done = {}; save(); draw(); return; }
+  const n = N[cur]; $("fpy").textContent = n.py || ""; $("fm").textContent = n.m + (n.tag ? "（"+n.tag+"）" : "");
+  $("fflip").hidden = true; $("fyes").hidden = false; $("fno").hidden = false;
+};
+$("fyes").onclick = () => { S.done[cur] = 1; save(); draw(); };
+$("fno").onclick = draw;
+
+/* ---------- 还原上次进度 ---------- */
+Object.entries(S.pick).forEach(([i,j]) => { if(HUI[i]) choose(+i, j); });
+$("got").textContent = Object.keys(S.got).filter(k=>N[k]&&!N[k].bu).length;
+tally(); draw();
+</script>
+</body>
+</html>
