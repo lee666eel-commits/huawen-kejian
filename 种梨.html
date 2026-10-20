@@ -500,12 +500,15 @@ document.addEventListener("click", e => {
   const PER = 18; let lines = [], keyLine = 0, keyEnd = 0;
   JUAN.forEach(p => {
     let cur = "　　", len = 2, bold = false;
-    for(const ch of p){
-      if(ch==="【"){ bold = true; cur += "<b>"; if(!keyLine) keyLine = lines.length+1; continue; }
-      if(ch==="】"){ bold = false; cur += "</b>"; keyEnd = len ? lines.length+1 : lines.length; continue; }
+    const cs = [...p];
+    cs.forEach((ch, k) => {
+      if(ch==="【"){ bold = true; cur += "<b>"; if(!keyLine) keyLine = lines.length+1; return; }
+      if(ch==="】"){ bold = false; cur += "</b>"; keyEnd = len ? lines.length+1 : lines.length; return; }
       cur += esc(ch); len++;
-      if(len===PER){ lines.push(cur + (bold?"</b>":"")); cur = bold?"<b>":""; len = 0; }
-    }
+      // ponytail: 标点不放行首，挂在上一行末（该行多一字）
+      const nx = cs.slice(k+1).find(c => c!=="【" && c!=="】");
+      if(len>=PER && !"，。；：？！、”’）".includes(nx||"")){ lines.push(cur + (bold?"</b>":"")); cur = bold?"<b>":""; len = 0; }
+    });
     if(len) lines.push(cur);
   });
   $("juan").innerHTML = lines.map((l,i) => `<span class="ln">${(i+1)%3===0 ? i+1 : ""}</span>${l}`).join("\n");
