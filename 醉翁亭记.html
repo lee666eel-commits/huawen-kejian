@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>醉翁亭记 · 考前读判</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ecdc;
+    --card: #fffaf1;
+    --ink: #1f1b16;
+    --ink-soft: #4a4339;
+    --muted: #8a7e6c;
+    --line: rgba(31, 27, 22, .13);
+    --zhu: #b8392a;
+    --zhu-deep: #8e2a1d;
+    --zhu-tint: #f7e2db;
+    --song: #2f6b57;
+    --song-tint: #e1efe7;
+    --gold: #c49a3e;
+    --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --shadow: 0 12px 34px -20px rgba(60, 40, 20, .5), 0 2px 6px -2px rgba(60, 40, 20, .12);
+    --ease: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); line-height: 1.7; background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 50% -10%, rgba(255,255,255,.8), transparent 60%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .17  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 20px 80px; }
+  button { font: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- 页首 ---------- */
+  .masthead { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: end; padding: 8px 0 26px; border-bottom: 1.5px solid var(--ink); }
+  .mast-vert { writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900; font-size: clamp(2.6rem, 9vw, 4.4rem); line-height: 1; letter-spacing: .1em; }
+  .mast-body h1 { margin: 0; font-family: var(--serif); font-weight: 900; font-size: clamp(1.6rem, 5vw, 2.6rem); line-height: 1.2; letter-spacing: .03em; }
+  .mast-body h1 em { font-style: normal; color: var(--zhu); }
+  .mast-body p { margin: 10px 0 0; color: var(--ink-soft); max-width: 44em; }
+  .seal { display: inline-grid; place-items: center; font-family: var(--serif); font-weight: 900; color: #fff; background: var(--zhu); border-radius: 5px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.28), inset 0 0 0 3.5px var(--zhu); flex-shrink: 0; }
+  .seal-sm { width: 28px; height: 28px; font-size: .8rem; }
+  .seal-lg { width: 64px; height: 64px; font-size: 1.5rem; transform: rotate(-6deg); }
+
+  /* ---------- 内容大意（连贯短文） ---------- */
+  .gist { margin: 30px 0 6px; display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: start; }
+  .gist-title { writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900; font-size: 1.35rem; letter-spacing: .3em; color: var(--zhu); border-left: 1.5px solid var(--zhu); padding-left: 10px; }
+  .gist-body { font-family: var(--serif); font-size: 1.06rem; line-height: 2.1; color: var(--ink); max-width: 46em; }
+  .gist-body p { margin: 0 0 .9em; text-indent: 2em; }
+  .gist-body b { color: var(--zhu-deep); font-weight: 700; }
+  .gist-body q { quotes: "“" "”"; }
+
+  /* ---------- 工具列 ---------- */
+  .toolbar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin: 22px -20px 0; padding: 12px 20px; background: linear-gradient(var(--paper) 75%, rgba(244,236,220,0)); }
+  .progress { font-size: .9rem; color: var(--ink-soft); display: flex; align-items: center; gap: 10px; }
+  .bar { width: 140px; height: 4px; border-radius: 4px; background: rgba(31,27,22,.12); overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--zhu); transform-origin: left; transition: transform .5s var(--ease); }
+  .tools { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+  .switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: .9rem; color: var(--ink-soft); background: none; border: none; padding: 6px 0; min-height: 40px; }
+  .switch .knob { width: 40px; height: 22px; border-radius: 22px; background: rgba(31,27,22,.18); position: relative; transition: background .25s; }
+  .switch .knob::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .3s var(--ease); }
+  .switch[aria-pressed="true"] .knob { background: var(--zhu); }
+  .switch[aria-pressed="true"] .knob::after { transform: translateX(18px); }
+
+  /* ---------- 版面：文章 + 判读面板 ---------- */
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 34px; align-items: start; margin-top: 8px; }
+  .article { position: relative; background: var(--card); border-radius: 18px; padding: 34px 38px 40px; box-shadow: var(--shadow); }
+  .article h2 { margin: 0 0 4px; font-family: var(--serif); font-weight: 900; font-size: 1.9rem; letter-spacing: .08em; }
+  .byline { color: var(--muted); font-size: .85rem; margin-bottom: 22px; }
+  .scroll { position: relative; }
+  .article.folded .scroll { max-height: 15em; overflow: hidden; }
+  .article.folded .scroll::after { content: ""; position: absolute; inset: auto 0 0 0; height: 9em; background: linear-gradient(rgba(255,250,241,0), var(--card) 85%); pointer-events: none; }
+  .unfold { display: none; margin: 4px auto 0; }
+  .article.folded .unfold { display: flex; }
+  .para { position: relative; margin: 0 0 1.1em; font-family: var(--serif); font-size: 1.2rem; line-height: 2.15; text-indent: 2em; }
+  .para-no { position: absolute; left: -30px; top: .4em; width: 22px; text-align: right; text-indent: 0; font-family: var(--sans); font-size: .72rem; color: var(--muted); }
+  .s {
+    display: inline; cursor: pointer; border-radius: 4px; padding: 1px 0;
+    background-image: linear-gradient(transparent 92%, rgba(184,57,42,.28) 92%);
+    transition: background-color .25s, color .25s;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .s:hover { background-color: rgba(196,154,62,.16); }
+  .s.ok { background-image: linear-gradient(transparent 90%, rgba(47,107,87,.55) 90%); }
+  .s.bad { background-image: linear-gradient(transparent 88%, rgba(184,57,42,.75) 88%); }
+  .s.active { background-color: rgba(184,57,42,.13); color: var(--zhu-deep); }
+  .tr { display: none; margin: -.4em 0 1.4em; padding: 10px 14px; background: rgba(196,154,62,.1); border-radius: 10px; font-size: .95rem; line-height: 1.9; color: var(--ink-soft); }
+  .tr-on .tr { display: block; }
+  .date { text-align: right; text-indent: 0; }
+
+  .panel { position: sticky; top: 72px; max-height: calc(100vh - 92px); overflow: auto; background: var(--card); border-radius: 18px; box-shadow: var(--shadow); padding: 22px 22px 24px; scrollbar-width: thin; }
+  .panel-empty { text-align: center; color: var(--muted); padding: 40px 10px; }
+  .panel-empty .big { font-family: var(--serif); font-weight: 900; font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+  .p-tag { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); }
+  .p-close { display: none; border: none; background: none; font-size: 1.4rem; line-height: 1; cursor: pointer; color: var(--ink-soft); padding: 4px 8px; min-width: 40px; min-height: 40px; }
+  .p-quote { margin: 10px 0 16px; font-family: var(--serif); font-size: 1.15rem; line-height: 1.9; padding: 12px 14px; border-radius: 12px; background: rgba(184,57,42,.05); box-shadow: inset 0 0 0 1px rgba(184,57,42,.18); }
+  .p-step { font-family: var(--serif); font-weight: 700; margin: 0 0 10px; display: flex; gap: 10px; align-items: center; }
+  .opt {
+    display: block; width: 100%; text-align: left; border: none; cursor: pointer; border-radius: 12px; padding: 12px 14px 12px 44px; margin-bottom: 10px; position: relative;
+    font-size: .98rem; line-height: 1.75; background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); transition: box-shadow .2s, background .2s, transform .15s;
+  }
+  .opt::before { content: attr(data-k); position: absolute; left: 14px; top: 12px; font-family: var(--serif); font-weight: 900; color: var(--muted); }
+  .opt:hover:not([disabled]) { box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .opt:active:not([disabled]) { transform: scale(.99); }
+  .opt[disabled] { cursor: default; }
+  .opt.right { background: var(--song-tint); box-shadow: inset 0 0 0 2px rgba(47,107,87,.65); }
+  .opt.right::before { content: "✓"; color: var(--song); }
+  .opt.wrong { background: var(--zhu-tint); box-shadow: inset 0 0 0 2px rgba(184,57,42,.6); text-decoration: line-through; text-decoration-color: rgba(184,57,42,.5); }
+  .opt.wrong::before { content: "✗"; color: var(--zhu); }
+  .opt.dim { opacity: .55; }
+  .verdict { font-family: var(--serif); font-weight: 900; font-size: 1.1rem; margin: 6px 0 8px; }
+  .verdict.ok { color: var(--song); }
+  .verdict.bad { color: var(--zhu); }
+  .note { padding: 12px 14px; border-radius: 12px; background: rgba(196,154,62,.1); font-size: .92rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 10px; }
+  .note h4 { margin: 0 0 4px; font-family: var(--serif); font-size: .95rem; color: var(--ink); }
+  .note p { margin: 0; }
+  .btn { border: none; cursor: pointer; border-radius: 999px; padding: 12px 20px; min-height: 46px; font-family: var(--serif); font-weight: 700; letter-spacing: .1em; background: var(--ink); color: #fbf4e6; transition: background .2s, transform .15s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn:hover { background: var(--zhu-deep); }
+  .btn:active { transform: scale(.98); }
+  .btn-ghost { background: transparent; color: var(--ink-soft); box-shadow: inset 0 0 0 1.5px var(--line); letter-spacing: .04em; }
+  .btn-ghost:hover { background: rgba(255,255,255,.6); }
+  .p-nav { display: flex; gap: 10px; margin-top: 14px; }
+  .p-nav .btn { flex: 1; }
+  .reveal { animation: up .5s var(--ease) both; }
+  @keyframes up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- 成绩 ---------- */
+  .result { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+  .result h2 { font-family: var(--serif); font-weight: 900; font-size: 1.5rem; margin: 0 0 10px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat { background: var(--card); border-radius: 14px; padding: 14px; box-shadow: var(--shadow); }
+  .stat b { display: block; font-family: var(--serif); font-weight: 900; font-size: 2rem; line-height: 1.1; }
+  .stat span { font-size: .8rem; color: var(--muted); }
+  .redo { list-style: none; margin: 0; padding: 0; }
+  .redo li { margin-bottom: 8px; }
+  .redo button { width: 100%; text-align: left; border: none; cursor: pointer; background: var(--card); border-radius: 12px; padding: 10px 14px; font-family: var(--serif); font-size: 1rem; line-height: 1.7; box-shadow: inset 0 0 0 1.5px rgba(184,57,42,.35); }
+  .moral { background: var(--ink); color: #f3ead7; border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow); }
+  .moral h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.2rem; color: #fff; }
+  .moral p { margin: 0 0 10px; color: #dcd1ba; }
+  .moral .formula { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.08); font-family: var(--serif); color: #fff; }
+  .moral .formula em { font-style: normal; color: #ffb7a6; }
+  .done-seal { display: none; align-items: center; gap: 14px; margin: 0 0 14px; font-family: var(--serif); font-weight: 700; }
+  .all-done .done-seal { display: flex; }
+  .foot { margin-top: 30px; font-size: .78rem; color: var(--muted); text-align: center; }
+
+  @media (max-width: 960px) {
+    .stage { grid-template-columns: 1fr; }
+    .panel {
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 40; max-height: 82vh;
+      border-radius: 20px 20px 0 0; padding: 18px 18px calc(22px + env(safe-area-inset-bottom));
+      transform: translateY(105%); transition: transform .45s var(--ease); box-shadow: 0 -16px 40px -12px rgba(40,25,10,.45);
+    }
+    .panel.open { transform: none; }
+    .panel-empty { display: none; }
+    .p-close { display: block; }
+    .result { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 18px 16px 70px; }
+    .gist { grid-template-columns: 1fr; gap: 10px; }
+    .gist-title { writing-mode: horizontal-tb; border-left: none; border-bottom: 1.5px solid var(--zhu); padding: 0 0 6px; letter-spacing: .2em; font-size: 1.15rem; }
+    .gist-body { font-size: 1rem; line-height: 2; }
+    .article { padding: 24px 18px 28px; border-radius: 14px; }
+    .para { font-size: 1.1rem; line-height: 2.1; }
+    .para-no { display: none; }
+    .toolbar { margin: 18px -16px 0; padding: 10px 16px; }
+    .stat b { font-size: 1.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+  @media print {
+    .toolbar, .panel, .p-close, .unfold { display: none !important; }
+    .stage { grid-template-columns: 1fr; }
+    .article.folded .scroll { max-height: none; }
+    .article.folded .scroll::after { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="mast-vert" aria-hidden="true">醉翁亭记</div>
+    <div class="mast-body">
+      <h1>读一句，<em>判</em>一句</h1>
+      <p>欧阳修《醉翁亭记》考前复习。先读下面的内容大意，知道全文在说什么；再展开原文，点任何一句，从两个译文里判出对的那一个。判错不要紧——红线会留着，提醒你考前再看一眼。</p>
+    </div>
+  </header>
+
+  <section class="gist" aria-label="内容大意">
+    <div class="gist-title">内容大意</div>
+    <div class="gist-body">
+      <p>全文写了两个重点：前写<b>亭</b>，后写<b>游</b>；贯穿全篇的是一个<b>乐</b>字，领起全文的是<q>醉翁之意不在酒</q>一句。开头一段由远而近：滁州四面是山，西南诸峰尤为优美，那蔚然深秀的是琅琊；走六七里，听到水声，看见酿泉；峰回路转，亭角翘起如鸟展翅，便是醉翁亭。建亭的是和尚智仙，取名的是太守——太守喝一点就醉，年纪又最大，自号<q>醉翁</q>。可他的意趣不在酒，<q>在乎山水之间也</q>。</p>
+      <p>第二、三段写游。先写山间的朝暮与四时：日出雾散，云归岩暗；春花、夏木、秋霜、冬石，景色不同，乐也无穷。再写人：背东西的唱歌，走路的歇息，老人小孩往来不绝，是滁人游；溪鱼泉酒、山肴野蔌，是太守宴；投壶下棋、觥筹交错，是众宾欢；苍颜白发、醉醺醺坐在其间的，是太守醉。</p>
+      <p>末段夕阳在山，人影散乱，太守归去，宾客相从，禽鸟在林中欢鸣。于是一层层说乐：禽鸟知山林之乐，不知人之乐；游人知从太守游之乐，不知太守之乐其乐。醉了能与民同乐，醒了能写成文章的，就是太守——直到最后一句，才点出他是庐陵欧阳修。乐的背后，也藏着被贬的郁闷，借山水宴游来排遣。</p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="progress"><span id="prog-text">已判 0 / 0 句</span><span class="bar"><i id="prog-bar" style="transform:scaleX(0)"></i></span></div>
+    <div class="tools">
+      <button class="switch" id="fold-toggle" type="button" aria-pressed="false"><span class="knob" aria-hidden="true"></span>展开原文</button>
+      <button class="switch" id="tr-toggle" type="button" aria-pressed="false"><span class="knob" aria-hidden="true"></span>显示全篇译文</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <article class="article folded" id="article" aria-label="《醉翁亭记》全文，每一句都可以点开判读">
+      <h2>醉翁亭记</h2>
+      <div class="byline">欧阳修（北宋） · 点任何一句，开始判读 · 段落号写在左边</div>
+      <div class="scroll" id="paras"></div>
+      <button class="btn unfold" id="unfold-btn" type="button">展开原文 · 共四段</button>
+    </article>
+    <aside class="panel" id="panel" aria-live="polite">
+      <div class="panel-empty"><div class="big">先点一句</div>原文里任何一句都可以点开。<br>两个译文，判出对的那一个。</div>
+    </aside>
+  </div>
+
+  <section class="result" id="result" aria-label="判读成绩">
+    <div>
+      <div class="done-seal"><span class="seal seal-lg">通</span><span>全篇判完。答错过的句子在下面，考前再点一次。</span></div>
+      <h2>判读成绩</h2>
+      <div class="stats" id="stats"></div>
+      <h3 style="font-family:var(--serif);margin:18px 0 10px">答错过的句子</h3>
+      <ul class="redo" id="redo"></ul>
+    </div>
+    <div class="moral">
+      <h3>为什么用“二选一”？</h3>
+      <p>译文背得出来，不等于看得懂。两个译文摆在一起，差别往往只有一个字的解释——“意”是“意趣”还是“意思”，“去”是“离开”还是“前往”，“颓然”是“醉醺醺”还是“颓废”。</p>
+      <p>能一眼判出哪个对，说明那个字你真的懂了；判错了，那个字就是你考前要补的。</p>
+      <div class="formula">读法：<em>先看关键字</em> → 古义还是今义？ → 再看整句通不通</div>
+    </div>
+  </section>
+
+  <p class="foot">原文据高一华文下册课本第三课 · 译文与注释由林子策自译 · 干扰译文为复习而设，主要考古今异义、一词多义与词类活用。</p>
+</div>
+
+<script>
+"use strict";
+// 每一句：段号 p、原文 o、译文 t、干扰译文 d、注释 k、为什么错 w
+const S = [
+  { p: 1, o: "环滁皆山也。",
+    t: "滁州城四周，都被群山环绕着。",
+    d: "滁州城四周，只被一座山环绕着。",
+    k: "环：围绕。滁（chú）：滁州。皆：全、都。也：句末语气词，表示判断。",
+    w: "“皆”是“都”：滁州四面都是山，不是只有一座。" },
+  { p: 1, o: "其西南诸峰，林壑尤美。",
+    t: "城西南的那些山峰，树林和山谷格外秀美。",
+    d: "城西南的那一座山峰，树林和山谷格外秀美。",
+    k: "诸：众多、各个。壑（hè）：山谷。尤：格外、特别。",
+    w: "“诸峰”是众多山峰，“诸”在这里是“各个、众”，不是只有一座。" },
+  { p: 1, o: "望之蔚然而深秀者，琅琊也。",
+    t: "远远望去，草木繁茂、幽深秀丽的那一座，就是琅琊山。",
+    d: "远远望去，天色蔚蓝、幽深秀丽的那一座，就是琅琊山。",
+    k: "之：调节音节，无实义。蔚（wèi）然：草木茂盛的样子。深秀：幽深而秀丽。",
+    w: "“蔚然”是树木茂盛的样子，不是颜色蔚蓝。" },
+  { p: 1, o: "山行六七里，渐闻水声潺潺而泻出于两峰之间者，酿泉也。",
+    t: "沿着山路走了六七里，渐渐听见潺潺的流水声，那从两座山峰之间倾泻而出的，就是酿泉。",
+    d: "山势绵延了六七里，渐渐听见潺潺的流水声，那从两座山峰之间倾泻而出的，就是酿泉。",
+    k: "山行：沿着山路走（“山”是名词作状语）。潺潺（chán）：流水声。泻：水流急速流下。酿（niàng）泉：泉名。",
+    w: "“山行”的“山”是名词作状语：沿着山路走，不是山绵延了六七里。" },
+  { p: 1, o: "峰回路转有亭翼然临于泉上者，醉翁亭也。",
+    t: "山峰回环，山路随之转弯，有一座亭子，亭角翘起，像鸟儿展开翅膀，高高地坐落在泉水旁边，那就是醉翁亭。",
+    d: "山峰回环，山路随之转弯，有一座亭子真的长出了翅膀，正从泉水上面飞过，那就是醉翁亭。",
+    k: "翼然：像鸟张开翅膀的样子（“翼”由名词活用）。临：居高临下，靠近。",
+    w: "“翼然”是比喻：亭角翘起像鸟张翅，亭子并没有真的飞。" },
+  { p: 1, o: "作亭者谁？山之僧智仙也。",
+    t: "建造这座亭子的是谁？是山里的僧人智仙。",
+    d: "在这座亭子里写文章的是谁？是山里的僧人智仙。",
+    k: "作：建造。僧：僧人、和尚。",
+    w: "“作亭”的“作”是建造，不是写作。" },
+  { p: 1, o: "名之者谁？太守自谓也。",
+    t: "替亭子取名的又是谁？是太守用自己的别号来命名的。",
+    d: "名声最响的又是谁？是太守自己这么说的。",
+    k: "名：名词用作动词，命名。谓：称呼、命名。",
+    w: "“名之”的“名”是名词作动词：给它取名，不是“名气”。" },
+  { p: 1, o: "太守与客来饮于此，饮少辄醉，而年又最高，故自号曰“醉翁”也。",
+    t: "太守常和宾客到这里喝酒，喝一点儿就醉，年纪又是众人里最大的，所以给自己取了个别号，叫“醉翁”。",
+    d: "太守常和宾客到这里喝酒，很少喝醉，年纪又是众人里最大的，所以给自己取了个别号，叫“醉翁”。",
+    k: "辄（zhé）：就、总是。号：名词用作动词，取别号。",
+    w: "“饮少辄醉”是喝一点就醉，“辄”是“就”，不是很少喝醉。" },
+  { p: 1, o: "醉翁之意不在酒，在乎山水之间也。",
+    t: "醉翁真正的兴致不在酒上，而在山光水色之间。",
+    d: "醉翁的意思是他不想喝酒，只想住在山水之间。",
+    k: "意：意趣、兴致（古今异义）。乎：相当于“于”。",
+    w: "“意”古义是情趣、意趣：醉翁真正的乐趣在山水，不是说他不想喝酒。" },
+  { p: 1, o: "山水之乐，得之心而寓之酒也。",
+    t: "欣赏山水的乐趣，是心里体会到的，只是借喝酒来寄托罢了。",
+    d: "欣赏山水的乐趣，心里一体会到，就要喝酒来庆祝罢了。",
+    k: "得：体会、领会。寓：寄托。“得之心”即“得之于心”，“寓之酒”即“寓之于酒”。",
+    w: "“寓”是寄托：山水之乐借酒来寄托，不是用酒来庆祝。" },
+  { p: 2, o: "若夫日出而林霏开，云归而岩穴暝，晦明变化者，山间之朝暮也。",
+    t: "至于太阳升起，林间的雾气散开；暮云回聚，山岩洞穴变得昏暗——这样时明时暗地变化着，便是山中的早晨和傍晚。",
+    d: "至于太阳升起，林间的雾气散开；暮云散去，山岩洞穴变得明亮——这样时明时暗地变化着，便是山中的早晨和傍晚。",
+    k: "若夫：句首发语词，相当于“至于”。林霏（fēi）：林中的雾气。开：散开。归：聚拢。暝（míng）：昏暗。晦：暗。",
+    w: "“云归”是烟云聚拢回来，“暝”是昏暗——写的是傍晚，不是云散天明。" },
+  { p: 2, o: "野芳发而幽香，佳木秀而繁阴，风霜高洁，水落而石出者，山间之四时也。",
+    t: "野花盛开，飘着淡淡的清香；好树长得茂盛，绿荫浓密；秋风高爽，霜色洁白；溪水低落，石头显露出来——这便是山中的四季。",
+    d: "野外的香气飘散开来，淡淡清香；好树长得茂盛，绿荫浓密；秋风高爽，霜色洁白；溪水低落，石头显露出来——这便是山中的四季。",
+    k: "芳：花（古今异义）。发：开放。秀：茂盛。繁阴：浓密的树荫。风霜高洁：即“风高霜洁”。",
+    w: "“芳”古义是香花，“野芳发”是野花开放（春），不是香气散开。四句依次写春夏秋冬。" },
+  { p: 2, o: "朝而往，暮而归，四时之景不同，而乐亦无穷也。",
+    t: "早上进山，傍晚回来，四季的景色各不相同，所以游山的乐趣也无穷无尽。",
+    d: "早上进山，傍晚回来，四季的景色各不相同，可是游山的乐趣却十分有限。",
+    k: "而：表示因果。穷：尽。",
+    w: "“而乐亦无穷”的“而”表因果：景色不同，所以乐趣无穷。" },
+  { p: 3, o: "至于负者歌于途，行者休于树，",
+    t: "至于背着东西的人在路上唱歌，赶路的人在树下歇脚，",
+    d: "至于打了败仗的人在路上唱歌，赶路的人在树下歇脚，",
+    k: "至于：用在句首，引出另一件事。负者：背着东西的人。于途：在路上。休于树：在树下休息。",
+    w: "“负者”是背着东西的人，不是打败仗的人。" },
+  { p: 3, o: "前者呼，后者应，伛偻提携，往来而不绝者，滁人游也。",
+    t: "前面的人呼唤，后面的人应和，弯腰的老人、牵着走的孩子，来来往往、络绎不绝的，是滁州百姓在游山。",
+    d: "前面的人呼唤，后面的人应和，驼背的人提着行李，来来往往、络绎不绝的，是滁州百姓在游山。",
+    k: "伛偻（yǔ lǚ）：弯腰驼背，借指老人。提携：牵扶，借指孩子。",
+    w: "“伛偻”借指老人，“提携”借指小孩——写的是男女老少都来游玩。" },
+  { p: 3, o: "临溪而渔，溪深而鱼肥；",
+    t: "到溪边钓鱼，溪水深，鱼儿肥；",
+    d: "站在高处看溪里的渔夫，溪水深，鱼儿肥；",
+    k: "临：靠近、来到。渔：捕鱼（用作动词）。",
+    w: "“临溪而渔”是到溪边钓鱼，“渔”在这里是动词。" },
+  { p: 3, o: "酿泉为酒，泉香而酒洌；",
+    t: "用酿泉的水来酿酒，泉水清香，酒也清醇；",
+    d: "酿泉自己变成了酒，泉水清香，酒味浓烈；",
+    k: "为：造，“为酒”即酿酒。洌（liè）：清澈，这里指酒清醇。",
+    w: "“洌”是清澈、清醇，不是浓烈；“酿泉为酒”是用泉水酿酒。" },
+  { p: 3, o: "山肴野蔌，杂然而前陈者，太守宴也。",
+    t: "山里的野味、野生的蔬菜，各式各样摆在面前的，是太守设的酒宴。",
+    d: "山里的野味、野生的蔬菜，杂乱又陈旧过期的，是太守设的酒宴。",
+    k: "肴（yáo）：鱼肉一类的荤菜。蔌（sù）：蔬菜。杂然：错杂的样子。前：在面前（方位名词作状语）。陈：摆列。",
+    w: "“前陈”是在面前摆放，“陈”不是陈旧。" },
+  { p: 3, o: "宴酣之乐，非丝非竹，",
+    t: "宴饮尽兴的乐趣，并不来自音乐，",
+    d: "宴饮尽兴的乐趣，并不来自丝绸和竹子，",
+    k: "酣（hān）：尽兴。丝：弦乐器。竹：管乐器。“丝竹”合指音乐。",
+    w: "“丝竹”借指音乐：丝是弦乐器，竹是管乐器。" },
+  { p: 3, o: "射者中，弈者胜，觥筹交错，起坐而喧哗者，众宾欢也。",
+    t: "投壶的投中了，下棋的赢了，酒杯和酒筹交错杂乱，有人站起，有人坐下，大声喧闹的，是宾客们在尽情欢乐。",
+    d: "射箭的射中了靶心，下棋的赢了，酒杯和酒筹交错杂乱，有人站起，有人坐下，大声喧闹的，是宾客们在尽情欢乐。",
+    k: "射：投壶，古代宴会上把箭投进壶里的游戏。弈（yì）：下棋。觥（gōng）：酒杯。筹：行酒令时计数的签子。",
+    w: "“射”在这里指宴饮游戏“投壶”，不是射箭。" },
+  { p: 3, o: "苍颜白发，颓然乎其间者，太守醉也。",
+    t: "面容苍老、头发斑白，醉醺醺地倒在众人中间的，是喝醉了的太守。",
+    d: "面容苍老、头发斑白，意志消沉地坐在众人中间的，是喝醉了的太守。",
+    k: "苍颜：苍老的面容。颓（tuí）然：醉倒、醉醺醺的样子（古今异义）。",
+    w: "“颓然”古义是醉醺醺的样子，今义才是颓废。" },
+  { p: 4, o: "已而夕阳在山，人影散乱，太守归而宾客从也。",
+    t: "不久，夕阳落到山头，人影纷乱散开，那是太守动身回去，宾客们跟着他走了。",
+    d: "不久，夕阳落到山头，人影纷乱散开，那是太守动身回去，宾客们却留在山里不走。",
+    k: "已而：不久，随后。归：回去。从：跟随。",
+    w: "“宾客从”是宾客跟随太守回去，不是留下来。" },
+  { p: 4, o: "树林阴翳，鸣声上下，游人去而禽鸟乐也。",
+    t: "林木枝叶茂密，遮天成荫，鸟鸣声高高低低地响着，那是游人离开后，鸟儿在欢乐地歌唱。",
+    d: "林木枝叶茂密，遮天成荫，鸟鸣声高高低低地响着，那是游人来到林中，鸟儿跟着欢乐地歌唱。",
+    k: "阴翳（yì）：枝叶繁茂，遮蔽成荫。鸣声上下：鸟在高处低处鸣叫。去：离开（古今异义）。",
+    w: "“去”古义是离开：游人走了，鸟儿才快乐。" },
+  { p: 4, o: "然而禽鸟知山林之乐，而不知人之乐；",
+    t: "可是鸟儿只懂得山林的快乐，却不懂得人的快乐；",
+    d: "可是鸟儿懂得山林的快乐，也懂得人的快乐；",
+    k: "然而：可是，表示转折。而：却，表示转折。",
+    w: "“而不知人之乐”的“而”表转折：鸟儿不知道人的乐趣。" },
+  { p: 4, o: "人知从太守游而乐，而不知太守之乐其乐也。",
+    t: "游人懂得跟随太守游玩的快乐，却不懂得太守是以他们的快乐为快乐。",
+    d: "游人懂得跟随太守游玩的快乐，也懂得太守为什么快乐。",
+    k: "乐其乐：前一个“乐”是意动用法，“以……为乐”；后一个“乐”是名词，乐趣。",
+    w: "“而不知”——游人并不知道太守的乐趣：太守以游人之乐为乐。" },
+  { p: 4, o: "醉能同其乐，醒能述以文者，太守也。",
+    t: "醉了能和大家一同欢乐，醒来又能用文章把这些乐事写下来的，就是太守。",
+    d: "醉了只顾自己欢乐，醒来又能用文章把这些乐事写下来的，就是太守。",
+    k: "同其乐：与众人同乐。述以文：用文章来记述。",
+    w: "“同其乐”是和大家一起快乐——这正是“与民同乐”。" },
+  { p: 4, o: "太守谓谁？庐陵欧阳修也。",
+    t: "太守是谁呢？就是庐陵人欧阳修。",
+    d: "太守说的是谁呢？是庐陵人欧阳修。",
+    k: "谓：为、是。庐陵：今江西吉安，欧阳修的家乡。",
+    w: "“太守谓谁”的“谓”是“是”，不是“说”。文末才点出太守的名字。" },
+];
+const DATE_P = 0;
+
+// ---------- 状态 ----------
+const state = S.map(() => ({ pick: null, first: null, order: Math.random() < .5 ? ["t", "d"] : ["d", "t"] }));
+let cur = -1;
+
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs, kids) {
+  const n = document.createElement(tag);
+  for (const k in attrs || {}) {
+    if (k === "onclick") n.addEventListener("click", attrs[k]);
+    else if (k === "html") n.innerHTML = attrs[k];
+    else n.setAttribute(k, attrs[k]);
+  }
+  for (const c of kids || []) n.append(c);
+  return n;
+}
+
+// ---------- 文章 ----------
+function renderArticle() {
+  const box = $("paras"); box.innerHTML = "";
+  const groups = {};
+  S.forEach((s, i) => (groups[s.p] = groups[s.p] || []).push(i));
+  for (const p in groups) {
+    const para = el("p", { class: "para" + (+p === DATE_P ? " date" : "") });
+    if (+p !== DATE_P) para.append(el("span", { class: "para-no", "aria-hidden": "true" }, [p]));
+    for (const i of groups[p]) {
+      const sp = el("span", { class: "s", role: "button", tabindex: "0", "data-i": String(i) }, [S[i].o]);
+      sp.addEventListener("click", () => openSentence(i));
+      sp.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSentence(i); } });
+      para.append(sp);
+    }
+    box.append(para);
+    box.append(el("div", { class: "tr" }, [groups[p].map((i) => S[i].t).join("")]));
+  }
+}
+
+function paint() {
+  document.querySelectorAll(".s").forEach((sp) => {
+    const i = +sp.dataset.i, st = state[i];
+    sp.classList.toggle("active", i === cur);
+    sp.classList.toggle("ok", st.first === true);
+    sp.classList.toggle("bad", st.first === false);
+  });
+  const done = state.filter((s) => s.first !== null).length;
+  $("prog-text").textContent = `已判 ${done} / ${S.length} 句`;
+  $("prog-bar").style.transform = `scaleX(${done / S.length})`;
+  renderResult();
+}
+
+// ---------- 判读面板 ----------
+function openSentence(i) {
+  cur = i;
+  unfold(true);
+  renderPanel();
+  $("panel").classList.add("open");
+  paint();
+}
+function closePanel() { $("panel").classList.remove("open"); cur = -1; paint(); }
+
+function renderPanel() {
+  const i = cur, s = S[i], st = state[i], P = $("panel");
+  P.innerHTML = "";
+  const nth = S.slice(0, i + 1).filter((x) => x.p === s.p).length;
+  P.append(el("div", { class: "p-tag" }, [
+    el("span", {}, [s.p === DATE_P ? `文末 · 写作日期` : `第 ${s.p} 段 · 第 ${nth} 句`]),
+    el("button", { class: "p-close", type: "button", "aria-label": "关闭", onclick: closePanel }, ["×"]),
+  ]));
+  P.append(el("div", { class: "p-quote" }, [s.o]));
+  P.append(el("div", { class: "p-step" }, [el("span", { class: "seal seal-sm" }, ["判"]), "哪一个译文是对的？"]));
+
+  const answered = st.pick !== null;
+  st.order.forEach((key, n) => {
+    const b = el("button", { class: "opt", type: "button", "data-k": n ? "乙" : "甲" }, [s[key]]);
+    if (answered) {
+      b.disabled = true;
+      if (key === "t") b.classList.add("right");
+      else if (st.pick === "d") b.classList.add("wrong");
+      else b.classList.add("dim");
+    } else b.addEventListener("click", () => choose(key));
+    P.append(b);
+  });
+
+  if (answered) {
+    const ok = st.pick === "t";
+    const box = el("div", { class: "reveal" });
+    box.append(el("div", { class: "verdict " + (ok ? "ok" : "bad") }, [ok ? "判对了。" : "判错了——绿色那个才对。"]));
+    box.append(el("div", { class: "note" }, [el("h4", {}, ["关键在哪里"]), el("p", {}, [s.w])]));
+    box.append(el("div", { class: "note" }, [el("h4", {}, ["字词注释"]), el("p", {}, [s.k])]));
+    const nav = el("div", { class: "p-nav" });
+    const next = nextUndone(i);
+    if (next !== -1) nav.append(el("button", { class: "btn", type: "button", onclick: () => openSentence(next) }, ["下一句 →"]));
+    else nav.append(el("button", { class: "btn", type: "button", onclick: () => { closePanel(); $("result").scrollIntoView(); } }, ["看成绩"]));
+    box.append(nav);
+    P.append(box);
+  }
+}
+
+function choose(key) {
+  const st = state[cur];
+  st.pick = key;
+  if (st.first === null) st.first = key === "t";
+  renderPanel();
+  paint();
+}
+function nextUndone(i) {
+  for (let k = 1; k <= S.length; k++) { const j = (i + k) % S.length; if (state[j].pick === null) return j; }
+  return -1;
+}
+
+// ---------- 成绩 ----------
+function renderResult() {
+  const done = state.filter((s) => s.first !== null).length;
+  const right = state.filter((s) => s.first === true).length;
+  $("stats").innerHTML = "";
+  [[done, "已判"], [right, "一次判对"], [done - right, "判错过"]].forEach(([n, t]) =>
+    $("stats").append(el("div", { class: "stat" }, [el("b", {}, [String(n)]), el("span", {}, [t])])));
+  const ul = $("redo"); ul.innerHTML = "";
+  state.forEach((st, i) => {
+    if (st.first === false) ul.append(el("li", {}, [el("button", { type: "button", onclick: () => retry(i) }, [S[i].o])]));
+  });
+  if (!ul.children.length) ul.append(el("li", { style: "color:var(--muted)" }, [done ? "暂时没有，继续保持。" : "还没开始判。"]));
+  $("result").classList.toggle("all-done", done === S.length);
+}
+// 答错的句子可以重判；成绩仍按第一次算，红线保留
+function retry(i) { state[i].pick = null; state[i].order.reverse(); openSentence(i); }
+
+// ---------- 开关 ----------
+function unfold(on) {
+  $("article").classList.toggle("folded", !on);
+  $("fold-toggle").setAttribute("aria-pressed", String(on));
+}
+$("fold-toggle").addEventListener("click", () => unfold($("article").classList.contains("folded")));
+$("unfold-btn").addEventListener("click", () => unfold(true));
+$("tr-toggle").addEventListener("click", (e) => {
+  const on = !$("article").classList.contains("tr-on");
+  $("article").classList.toggle("tr-on", on);
+  e.currentTarget.setAttribute("aria-pressed", String(on));
+  if (on) unfold(true);
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePanel(); });
+
+renderArticle();
+paint();
+</script>
+</body>
+</html>

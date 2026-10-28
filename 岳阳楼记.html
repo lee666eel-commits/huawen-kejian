@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>岳阳楼记 · 考前读判</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f4ecdc;
+    --card: #fffaf1;
+    --ink: #1f1b16;
+    --ink-soft: #4a4339;
+    --muted: #8a7e6c;
+    --line: rgba(31, 27, 22, .13);
+    --zhu: #b8392a;
+    --zhu-deep: #8e2a1d;
+    --zhu-tint: #f7e2db;
+    --song: #2f6b57;
+    --song-tint: #e1efe7;
+    --gold: #c49a3e;
+    --serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+    --sans: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+    --shadow: 0 12px 34px -20px rgba(60, 40, 20, .5), 0 2px 6px -2px rgba(60, 40, 20, .12);
+    --ease: cubic-bezier(.16, 1, .3, 1);
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    margin: 0; font-family: var(--sans); color: var(--ink); line-height: 1.7; background-color: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 50% -10%, rgba(255,255,255,.8), transparent 60%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .27  0 0 0 0 .17  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 28px 20px 80px; }
+  button { font: inherit; }
+  :focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- 页首 ---------- */
+  .masthead { display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: end; padding: 8px 0 26px; border-bottom: 1.5px solid var(--ink); }
+  .mast-vert { writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900; font-size: clamp(2.6rem, 9vw, 4.4rem); line-height: 1; letter-spacing: .1em; }
+  .mast-body h1 { margin: 0; font-family: var(--serif); font-weight: 900; font-size: clamp(1.6rem, 5vw, 2.6rem); line-height: 1.2; letter-spacing: .03em; }
+  .mast-body h1 em { font-style: normal; color: var(--zhu); }
+  .mast-body p { margin: 10px 0 0; color: var(--ink-soft); max-width: 44em; }
+  .seal { display: inline-grid; place-items: center; font-family: var(--serif); font-weight: 900; color: #fff; background: var(--zhu); border-radius: 5px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.28), inset 0 0 0 3.5px var(--zhu); flex-shrink: 0; }
+  .seal-sm { width: 28px; height: 28px; font-size: .8rem; }
+  .seal-lg { width: 64px; height: 64px; font-size: 1.5rem; transform: rotate(-6deg); }
+
+  /* ---------- 内容大意（连贯短文） ---------- */
+  .gist { margin: 30px 0 6px; display: grid; grid-template-columns: auto 1fr; gap: 26px; align-items: start; }
+  .gist-title { writing-mode: vertical-rl; font-family: var(--serif); font-weight: 900; font-size: 1.35rem; letter-spacing: .3em; color: var(--zhu); border-left: 1.5px solid var(--zhu); padding-left: 10px; }
+  .gist-body { font-family: var(--serif); font-size: 1.06rem; line-height: 2.1; color: var(--ink); max-width: 46em; }
+  .gist-body p { margin: 0 0 .9em; text-indent: 2em; }
+  .gist-body b { color: var(--zhu-deep); font-weight: 700; }
+  .gist-body q { quotes: "“" "”"; }
+
+  /* ---------- 工具列 ---------- */
+  .toolbar { position: sticky; top: 0; z-index: 10; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; margin: 22px -20px 0; padding: 12px 20px; background: linear-gradient(var(--paper) 75%, rgba(244,236,220,0)); }
+  .progress { font-size: .9rem; color: var(--ink-soft); display: flex; align-items: center; gap: 10px; }
+  .bar { width: 140px; height: 4px; border-radius: 4px; background: rgba(31,27,22,.12); overflow: hidden; }
+  .bar i { display: block; height: 100%; background: var(--zhu); transform-origin: left; transition: transform .5s var(--ease); }
+  .tools { display: flex; flex-wrap: wrap; gap: 6px 16px; align-items: center; }
+  .switch { display: inline-flex; align-items: center; gap: 10px; cursor: pointer; font-size: .9rem; color: var(--ink-soft); background: none; border: none; padding: 6px 0; min-height: 40px; }
+  .switch .knob { width: 40px; height: 22px; border-radius: 22px; background: rgba(31,27,22,.18); position: relative; transition: background .25s; }
+  .switch .knob::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .3s var(--ease); }
+  .switch[aria-pressed="true"] .knob { background: var(--zhu); }
+  .switch[aria-pressed="true"] .knob::after { transform: translateX(18px); }
+
+  /* ---------- 版面：文章 + 判读面板 ---------- */
+  .stage { display: grid; grid-template-columns: minmax(0, 1fr) 420px; gap: 34px; align-items: start; margin-top: 8px; }
+  .article { position: relative; background: var(--card); border-radius: 18px; padding: 34px 38px 40px; box-shadow: var(--shadow); }
+  .article h2 { margin: 0 0 4px; font-family: var(--serif); font-weight: 900; font-size: 1.9rem; letter-spacing: .08em; }
+  .byline { color: var(--muted); font-size: .85rem; margin-bottom: 22px; }
+  .scroll { position: relative; }
+  .article.folded .scroll { max-height: 15em; overflow: hidden; }
+  .article.folded .scroll::after { content: ""; position: absolute; inset: auto 0 0 0; height: 9em; background: linear-gradient(rgba(255,250,241,0), var(--card) 85%); pointer-events: none; }
+  .unfold { display: none; margin: 4px auto 0; }
+  .article.folded .unfold { display: flex; }
+  .para { position: relative; margin: 0 0 1.1em; font-family: var(--serif); font-size: 1.2rem; line-height: 2.15; text-indent: 2em; }
+  .para-no { position: absolute; left: -30px; top: .4em; width: 22px; text-align: right; text-indent: 0; font-family: var(--sans); font-size: .72rem; color: var(--muted); }
+  .s {
+    display: inline; cursor: pointer; border-radius: 4px; padding: 1px 0;
+    background-image: linear-gradient(transparent 92%, rgba(184,57,42,.28) 92%);
+    transition: background-color .25s, color .25s;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
+  }
+  .s:hover { background-color: rgba(196,154,62,.16); }
+  .s.ok { background-image: linear-gradient(transparent 90%, rgba(47,107,87,.55) 90%); }
+  .s.bad { background-image: linear-gradient(transparent 88%, rgba(184,57,42,.75) 88%); }
+  .s.active { background-color: rgba(184,57,42,.13); color: var(--zhu-deep); }
+  .tr { display: none; margin: -.4em 0 1.4em; padding: 10px 14px; background: rgba(196,154,62,.1); border-radius: 10px; font-size: .95rem; line-height: 1.9; color: var(--ink-soft); }
+  .tr-on .tr { display: block; }
+  .date { text-align: right; text-indent: 0; }
+
+  .panel { position: sticky; top: 72px; max-height: calc(100vh - 92px); overflow: auto; background: var(--card); border-radius: 18px; box-shadow: var(--shadow); padding: 22px 22px 24px; scrollbar-width: thin; }
+  .panel-empty { text-align: center; color: var(--muted); padding: 40px 10px; }
+  .panel-empty .big { font-family: var(--serif); font-weight: 900; font-size: 1.3rem; color: var(--ink); margin-bottom: 6px; }
+  .p-tag { display: flex; justify-content: space-between; align-items: center; font-size: .8rem; color: var(--muted); }
+  .p-close { display: none; border: none; background: none; font-size: 1.4rem; line-height: 1; cursor: pointer; color: var(--ink-soft); padding: 4px 8px; min-width: 40px; min-height: 40px; }
+  .p-quote { margin: 10px 0 16px; font-family: var(--serif); font-size: 1.15rem; line-height: 1.9; padding: 12px 14px; border-radius: 12px; background: rgba(184,57,42,.05); box-shadow: inset 0 0 0 1px rgba(184,57,42,.18); }
+  .p-step { font-family: var(--serif); font-weight: 700; margin: 0 0 10px; display: flex; gap: 10px; align-items: center; }
+  .opt {
+    display: block; width: 100%; text-align: left; border: none; cursor: pointer; border-radius: 12px; padding: 12px 14px 12px 44px; margin-bottom: 10px; position: relative;
+    font-size: .98rem; line-height: 1.75; background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line); transition: box-shadow .2s, background .2s, transform .15s;
+  }
+  .opt::before { content: attr(data-k); position: absolute; left: 14px; top: 12px; font-family: var(--serif); font-weight: 900; color: var(--muted); }
+  .opt:hover:not([disabled]) { box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .opt:active:not([disabled]) { transform: scale(.99); }
+  .opt[disabled] { cursor: default; }
+  .opt.right { background: var(--song-tint); box-shadow: inset 0 0 0 2px rgba(47,107,87,.65); }
+  .opt.right::before { content: "✓"; color: var(--song); }
+  .opt.wrong { background: var(--zhu-tint); box-shadow: inset 0 0 0 2px rgba(184,57,42,.6); text-decoration: line-through; text-decoration-color: rgba(184,57,42,.5); }
+  .opt.wrong::before { content: "✗"; color: var(--zhu); }
+  .opt.dim { opacity: .55; }
+  .verdict { font-family: var(--serif); font-weight: 900; font-size: 1.1rem; margin: 6px 0 8px; }
+  .verdict.ok { color: var(--song); }
+  .verdict.bad { color: var(--zhu); }
+  .note { padding: 12px 14px; border-radius: 12px; background: rgba(196,154,62,.1); font-size: .92rem; line-height: 1.8; color: var(--ink-soft); margin-bottom: 10px; }
+  .note h4 { margin: 0 0 4px; font-family: var(--serif); font-size: .95rem; color: var(--ink); }
+  .note p { margin: 0; }
+  .btn { border: none; cursor: pointer; border-radius: 999px; padding: 12px 20px; min-height: 46px; font-family: var(--serif); font-weight: 700; letter-spacing: .1em; background: var(--ink); color: #fbf4e6; transition: background .2s, transform .15s; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn:hover { background: var(--zhu-deep); }
+  .btn:active { transform: scale(.98); }
+  .btn-ghost { background: transparent; color: var(--ink-soft); box-shadow: inset 0 0 0 1.5px var(--line); letter-spacing: .04em; }
+  .btn-ghost:hover { background: rgba(255,255,255,.6); }
+  .p-nav { display: flex; gap: 10px; margin-top: 14px; }
+  .p-nav .btn { flex: 1; }
+  .reveal { animation: up .5s var(--ease) both; }
+  @keyframes up { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  /* ---------- 成绩 ---------- */
+  .result { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: start; }
+  .result h2 { font-family: var(--serif); font-weight: 900; font-size: 1.5rem; margin: 0 0 10px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 16px; }
+  .stat { background: var(--card); border-radius: 14px; padding: 14px; box-shadow: var(--shadow); }
+  .stat b { display: block; font-family: var(--serif); font-weight: 900; font-size: 2rem; line-height: 1.1; }
+  .stat span { font-size: .8rem; color: var(--muted); }
+  .redo { list-style: none; margin: 0; padding: 0; }
+  .redo li { margin-bottom: 8px; }
+  .redo button { width: 100%; text-align: left; border: none; cursor: pointer; background: var(--card); border-radius: 12px; padding: 10px 14px; font-family: var(--serif); font-size: 1rem; line-height: 1.7; box-shadow: inset 0 0 0 1.5px rgba(184,57,42,.35); }
+  .moral { background: var(--ink); color: #f3ead7; border-radius: 16px; padding: 22px 24px; box-shadow: var(--shadow); }
+  .moral h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 1.2rem; color: #fff; }
+  .moral p { margin: 0 0 10px; color: #dcd1ba; }
+  .moral .formula { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.08); font-family: var(--serif); color: #fff; }
+  .moral .formula em { font-style: normal; color: #ffb7a6; }
+  .done-seal { display: none; align-items: center; gap: 14px; margin: 0 0 14px; font-family: var(--serif); font-weight: 700; }
+  .all-done .done-seal { display: flex; }
+  .foot { margin-top: 30px; font-size: .78rem; color: var(--muted); text-align: center; }
+
+  @media (max-width: 960px) {
+    .stage { grid-template-columns: 1fr; }
+    .panel {
+      position: fixed; left: 0; right: 0; bottom: 0; top: auto; z-index: 40; max-height: 82vh;
+      border-radius: 20px 20px 0 0; padding: 18px 18px calc(22px + env(safe-area-inset-bottom));
+      transform: translateY(105%); transition: transform .45s var(--ease); box-shadow: 0 -16px 40px -12px rgba(40,25,10,.45);
+    }
+    .panel.open { transform: none; }
+    .panel-empty { display: none; }
+    .p-close { display: block; }
+    .result { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 560px) {
+    .wrap { padding: 18px 16px 70px; }
+    .gist { grid-template-columns: 1fr; gap: 10px; }
+    .gist-title { writing-mode: horizontal-tb; border-left: none; border-bottom: 1.5px solid var(--zhu); padding: 0 0 6px; letter-spacing: .2em; font-size: 1.15rem; }
+    .gist-body { font-size: 1rem; line-height: 2; }
+    .article { padding: 24px 18px 28px; border-radius: 14px; }
+    .para { font-size: 1.1rem; line-height: 2.1; }
+    .para-no { display: none; }
+    .toolbar { margin: 18px -16px 0; padding: 10px 16px; }
+    .stat b { font-size: 1.6rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+  @media print {
+    .toolbar, .panel, .p-close, .unfold { display: none !important; }
+    .stage { grid-template-columns: 1fr; }
+    .article.folded .scroll { max-height: none; }
+    .article.folded .scroll::after { display: none; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="mast-vert" aria-hidden="true">岳阳楼记</div>
+    <div class="mast-body">
+      <h1>读一句，<em>判</em>一句</h1>
+      <p>范仲淹《岳阳楼记》考前复习。先读下面的内容大意，知道全文在说什么；再展开原文，点任何一句，从两个译文里判出对的那一个。判错不要紧——红线会留着，提醒你考前再看一眼。</p>
+    </div>
+  </header>
+
+  <section class="gist" aria-label="内容大意">
+    <div class="gist-title">内容大意</div>
+    <div class="gist-body">
+      <p>全文三百六十八字，分<b>叙事、写景、说理</b>三部分，层次分明。开头一段叙事：庆历四年春，滕子京被贬到巴陵郡，过了第二年，竟做到<q>政通人和，百废具兴</q>，于是重修岳阳楼，请范仲淹作记。政绩只用八个字带过，楼本身也几乎不写——作者的意思不在楼上，在后面。</p>
+      <p>第二至四段写景。先写洞庭湖<q>衔远山，吞长江</q>的大观，<q>前人之述备矣</q>，便不再重复；笔锋一转，问被贬的官员、失意的文人聚到这里，看了景物，心情能一样吗？于是一暗一明两幅图：阴雨连月、浊浪排空，登楼的人<q>感极而悲</q>；春和景明、皓月千里，登楼的人<q>其喜洋洋</q>。景恶则悲，景美则喜，悲喜都跟着景物走——这两段，是为下文作的铺垫。</p>
+      <p>末段说理，是全文的核心。古时的仁人<q>不以物喜，不以己悲</q>：在朝廷做大官，忧百姓；退到偏远的地方，忧君主，进也忧，退也忧。那么什么时候才快乐？<q>先天下之忧而忧，后天下之乐而乐</q>。最后一句<q>微斯人，吾谁与归</q>，既是自勉，也是在勉励同样被贬的友人滕子京。</p>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="progress"><span id="prog-text">已判 0 / 0 句</span><span class="bar"><i id="prog-bar" style="transform:scaleX(0)"></i></span></div>
+    <div class="tools">
+      <button class="switch" id="fold-toggle" type="button" aria-pressed="false"><span class="knob" aria-hidden="true"></span>展开原文</button>
+      <button class="switch" id="tr-toggle" type="button" aria-pressed="false"><span class="knob" aria-hidden="true"></span>显示全篇译文</button>
+    </div>
+  </div>
+
+  <div class="stage">
+    <article class="article folded" id="article" aria-label="《岳阳楼记》全文，每一句都可以点开判读">
+      <h2>岳阳楼记</h2>
+      <div class="byline">范仲淹（北宋）· 点任何一句，开始判读 · 段落号写在左边</div>
+      <div class="scroll" id="paras"></div>
+      <button class="btn unfold" id="unfold-btn" type="button">展开原文 · 共五段</button>
+    </article>
+    <aside class="panel" id="panel" aria-live="polite">
+      <div class="panel-empty"><div class="big">先点一句</div>原文里任何一句都可以点开。<br>两个译文，判出对的那一个。</div>
+    </aside>
+  </div>
+
+  <section class="result" id="result" aria-label="判读成绩">
+    <div>
+      <div class="done-seal"><span class="seal seal-lg">通</span><span>全篇判完。答错过的句子在下面，考前再点一次。</span></div>
+      <h2>判读成绩</h2>
+      <div class="stats" id="stats"></div>
+      <h3 style="font-family:var(--serif);margin:18px 0 10px">答错过的句子</h3>
+      <ul class="redo" id="redo"></ul>
+    </div>
+    <div class="moral">
+      <h3>为什么用“二选一”？</h3>
+      <p>译文背得出来，不等于看得懂。两个译文摆在一起，差别往往只有一个字的解释——“然则”是“那么”还是“然而”，“去国”是“离开”还是“前往”，“备”是“详尽”还是“准备”。</p>
+      <p>能一眼判出哪个对，说明那个字你真的懂了；判错了，那个字就是你考前要补的。</p>
+      <div class="formula">读法：<em>先看关键字</em> → 古义还是今义？ → 再看整句通不通</div>
+    </div>
+  </section>
+
+  <p class="foot">原文据高一华文下册课本第二课 · 译文与注释由林子策自译 · 干扰译文为复习而设，主要考古今异义、一词多义与词类活用。</p>
+</div>
+
+<script>
+"use strict";
+// 每一句：段号 p、原文 o、译文 t、干扰译文 d、注释 k、为什么错 w
+const S = [
+  { p: 1, o: "庆历四年春，滕子京谪守巴陵郡。",
+    t: "庆历四年春天，滕子京被贬官，调到巴陵郡做太守。",
+    d: "庆历四年春天，滕子京获得升迁，调到巴陵郡做太守。",
+    k: "谪（zhé）：官吏降职或调往偏远地方。守：名词作动词，担任太守。巴陵郡：即岳州。",
+    w: "“谪”是贬官，不是升官。滕子京是被贬到巴陵的——这一点是全文的伏笔。" },
+  { p: 1, o: "越明年，政通人和，百废具兴。",
+    t: "到了第二年，政事顺畅，百姓和乐，各种荒废的事业全都兴办起来了。",
+    d: "到了第二年，政事顺畅，百姓和乐，各种荒废的事业都具备了兴办的条件。",
+    k: "越：到了。政通人和：政事顺畅，百姓和乐。具：同“俱”，全、都。废：荒废的事业。",
+    w: "“具”同“俱”，是“全、都”，不是“具备”。百废具兴＝各种荒废的事全都兴办起来。" },
+  { p: 1, o: "乃重修岳阳楼，增其旧制，刻唐贤、今人诗赋于其上。",
+    t: "于是重新修建岳阳楼，扩大原有的规模，把唐代名家和当今文人的诗赋刻在楼上。",
+    d: "于是重新修建岳阳楼，增订原有的规章制度，把唐代名家和当今文人的诗赋刻在楼上。",
+    k: "乃：于是。增：扩大。制：规模。唐贤：唐代有名的文人。今人：当时的人。",
+    w: "“制”在这里是“规模”，不是“制度”。增其旧制＝把原来的规模扩大。" },
+  { p: 1, o: "属予作文以记之。",
+    t: "他托我写一篇文章，把这件事记下来。",
+    d: "这件事属于我，就由我写一篇文章记下来。",
+    k: "属（zhǔ）：通“嘱”，托付。作文：写文章。之：指重修岳阳楼这件事。",
+    w: "“属”通“嘱”，是“嘱托”，不是“属于”。是滕子京托范仲淹写的。" },
+  { p: 2, o: "予观夫巴陵胜状，在洞庭一湖。",
+    t: "我看巴陵一带的美景，都集中在洞庭湖上。",
+    d: "我站在洞庭湖上，观看巴陵一带的美景。",
+    k: "夫（fú）：那。胜状：美好的景象。",
+    w: "“在洞庭一湖”是说美景“在”洞庭湖，不是说“我”在湖上看。主语是“胜状”，不是“予”。" },
+  { p: 2, o: "衔远山，吞长江，浩浩汤汤，横无际涯；",
+    t: "它连着远处的群山，吞吐着长江的水流，水势浩大，宽阔得望不到边际；",
+    d: "它远离远处的群山，吞没了长江的水流，水势浩大，横跨着无数的边界；",
+    k: "衔：含着，这里指连接。吞：吞吐。浩浩汤汤（shāng）：水势浩大的样子。横：广阔。际涯：边际。",
+    w: "“衔”是含着、连着，正好写出湖与远山相连；“横无际涯”是宽阔得看不到边，不是“横跨边界”。" },
+  { p: 2, o: "朝晖夕阴，气象万千。",
+    t: "早晨阳光明亮，傍晚暮色阴沉，景色变化多端。",
+    d: "早晨阳光明亮，傍晚暮色阴沉，景色千篇一律。",
+    k: "朝（zhāo）：早晨。晖：日光。阴：昏暗。气象：景色。万千：变化多。",
+    w: "“气象万千”是景象千变万化，不是千篇一律。早晨有阳光、傍晚转阴暗，正写出湖上景色变化多。" },
+  { p: 2, o: "此则岳阳楼之大观也。",
+    t: "这就是岳阳楼上所见的壮丽景象，",
+    d: "这就是岳阳楼最大的观景台，",
+    k: "大观：壮丽的景象（“观”是名词，景象）。",
+    w: "“观”在这里是名词“景象”，不是观景的地方。" },
+  { p: 2, o: "前人之述备矣。",
+    t: "前人的描写已经很完备了。",
+    d: "前人的描写早已准备好了。",
+    k: "述：描写、记述。备：完备、详尽（古今异义）。",
+    w: "“备”古义是“详尽、完备”，今义才是“准备”。" },
+  { p: 2, o: "然则北通巫峡，南极潇湘，迁客骚人，多会于此，",
+    t: "既然如此，它北面通到巫峡，南面直达潇水、湘水，被贬的官员和失意的文人，大多在这里相聚，",
+    d: "可是，它北面通到巫峡，南面直达潇水、湘水，被贬的官员和失意的文人，大多在这里相聚，",
+    k: "然则：既然这样，那么。北、南：方位名词作状语。极：直达。迁客：被贬到外地的官员。骚人：诗人，泛指失意文人。会：聚集。",
+    w: "“然则”是顺接的“（既然）这样，那么”，不是转折连词“然而”——上下句因果相承。" },
+  { p: 2, o: "览物之情，得无异乎？",
+    t: "他们看了这里的景物，心情难道会没有不同吗？",
+    d: "他们看了这里的景物，心情想来都一样吧？",
+    k: "得无……乎：难道不……吗（用反问表示肯定）。异：不同。",
+    w: "“得无异乎”＝能没有不同吗？意思是一定有所不同。下面两段正是写这两种不同的心情。" },
+  { p: 3, o: "若夫霪雨霏霏，连月不开，",
+    t: "至于阴雨绵绵，一连几个月都不放晴，",
+    d: "至于阴雨绵绵，一连几个月都打不开城门，",
+    k: "若夫：句首语气词，相当于“至于”。霪（yín）雨：连绵不断的雨。霏霏：雨下得密的样子。开：放晴。",
+    w: "“开”在这里是“放晴”，天不开＝天不晴，不是“打开”。" },
+  { p: 3, o: "阴风怒号，浊浪排空；",
+    t: "寒风怒吼，浑浊的浪头冲上天空；",
+    d: "寒风怒吼，浑浊的浪头全都退去；",
+    k: "阴风：寒冷的风。号（háo）：吼叫。排空：冲向天空。",
+    w: "“排空”是冲向天空，写浪大，不是“排干净”。" },
+  { p: 3, o: "日星隐耀，山岳潜形，",
+    t: "太阳和星星的光辉都隐没了，山岳也藏起了形影；",
+    d: "太阳和星星隐隐约约地闪耀，山岳沉进了水里；",
+    k: "耀：光辉。隐耀：光辉隐没。潜形：隐藏形迹。",
+    w: "“隐耀”是光辉隐没（看不见了），不是“隐约闪耀”。阴雨天，日月星辰都被遮住了。" },
+  { p: 3, o: "商旅不行，樯倾楫摧；",
+    t: "商人和旅客没法通行，船上的桅杆倒了，船桨断了；",
+    d: "商人和旅客没法通行，城墙倒了，船桨断了；",
+    k: "樯（qiáng）：桅杆。楫（jí）：船桨。摧：折断。",
+    w: "“樯”是船上的桅杆，不是“墙”。整句写的都是湖上行船的险况。" },
+  { p: 3, o: "薄暮冥冥，虎啸猿啼。",
+    t: "天快黑了，四下昏暗，只听见老虎长啸、猿猴哀啼。",
+    d: "暮色稀薄，天还亮着，只听见老虎长啸、猿猴哀啼。",
+    k: "薄（bó）：迫近、接近。冥冥：昏暗的样子。啸：长声吼叫。啼：哀叫。",
+    w: "“薄”是“迫近”，薄暮＝快到傍晚，不是“稀薄”。冥冥是昏暗，天并不亮。" },
+  { p: 3, o: "登斯楼也，则有去国怀乡，忧谗畏讥，满目萧然，感极而悲者矣。",
+    t: "这时登上这座楼，就会生出离开京城、思念家乡、担心被人诽谤、害怕被人讥讽的心情，满眼都是萧条冷落的景象，感慨到了极点而悲伤起来。",
+    d: "这时登上这座楼，就会生出前往京城、思念家乡、担心被人诽谤、害怕被人讥讽的心情，满眼都是萧条冷落的景象，感慨到了极点而悲伤起来。",
+    k: "斯：这。去：离开（古今异义）。国：国都，京城。谗：说坏话陷害人。讥：讥讽。萧然：萧条冷落的样子。极：到极点。",
+    w: "“去”古义是“离开”，今义才是“前往”；“国”古义是“国都”。去国＝离开京城（被贬）。" },
+  { p: 4, o: "至若春和景明，波澜不惊，",
+    t: "至于春风和煦、阳光明媚的日子，湖面平静，没有波澜起伏，",
+    d: "像那春天温和、景色明丽的日子，湖面的波浪不受惊吓，",
+    k: "至若：至于。和：温和。景：日光。惊：起伏、波动。",
+    w: "“至若”是连词（至于），不要拆成“像那”；“景”古义是日光；“惊”是起伏，波澜不惊＝湖面平静，不是“受惊吓”。" },
+  { p: 4, o: "上下天光，一碧万顷；",
+    t: "天色和湖光上下相连，一片碧绿，广阔无边；",
+    d: "上上下下都是天光，只有一处碧绿，约有万顷大；",
+    k: "上下天光：天色湖光上下相接。一碧万顷：一片碧绿，广阔无边（“万顷”极言其广）。",
+    w: "“一碧”的“一”是“一片”，不是“只有一处”；“万顷”是极言其广，不是实数。" },
+  { p: 4, o: "沙鸥翔集，锦鳞游泳；",
+    t: "沙鸥时而飞翔，时而停歇，美丽的鱼儿在水中游来游去；",
+    d: "沙鸥时而飞翔，时而停歇，穿着锦衣的游人在湖里游泳；",
+    k: "翔：飞。集：停歇。锦鳞：美丽的鱼（以“鳞”代指鱼）。游泳：指鱼在水中浮游、沉潜。",
+    w: "“锦鳞”以鳞代鱼，是美丽的鱼；“游泳”在这里是鱼的浮与沉，不是人游泳。" },
+  { p: 4, o: "岸芷汀兰，郁郁青青。",
+    t: "岸边的白芷、小洲上的兰草，香气浓郁，颜色青翠。",
+    d: "岸边的白芷、小洲上的兰草，忧郁寡欢，颜色青翠。",
+    k: "芷（zhǐ）：白芷，一种香草。汀（tīng）：水边平地、小洲。郁郁：香气浓郁。青青：颜色青翠。",
+    w: "“郁郁”在这里是香气浓郁，不是“忧郁”。整段写的是令人欢喜的春景。" },
+  { p: 4, o: "而或长烟一空，皓月千里，",
+    t: "有时大片烟雾完全散尽，明亮的月光照遍千里，",
+    d: "有人看见长空中一片烟雾，明亮的月光照遍千里，",
+    k: "或：有时。长烟：大片烟雾。一：全、完全。空：消散。皓（hào）月：明月。",
+    w: "“或”在这里是“有时”，不是“有人”；“一空”是完全消散，不是“一片”。" },
+  { p: 4, o: "浮光跃金，静影沉璧，",
+    t: "湖面浮动的月光闪着金色，平静的月影像一块沉在水底的白玉，",
+    d: "浮在水面的金子在跳动，平静的影子把白玉沉进了水里，",
+    k: "浮光跃金：月光照在波面上，像金子在跳动。静影沉璧：月影倒映水中，像沉在水底的玉璧。璧：圆形的玉。",
+    w: "这两句是比喻：月光像金、月影像璧，不是真的有金子和玉璧。" },
+  { p: 4, o: "渔歌互答，此乐何极！",
+    t: "渔夫的歌声此起彼落，互相应和，这种快乐哪里有尽头！",
+    d: "渔夫的歌声此起彼落，互相应和，这种快乐很快就到了尽头！",
+    k: "互答：互相应和。何极：哪有尽头。极：穷尽。",
+    w: "“何极”是“哪有穷尽”——快乐没有尽头，不是快乐到头了。“极”在本文三种意思：南极潇湘（直通）、此乐何极（穷尽）、感极而悲（极点）。" },
+  { p: 4, o: "登斯楼也，则有心旷神怡，宠辱偕忘，把酒临风，其喜洋洋者矣。",
+    t: "这时登上这座楼，就会觉得心胸开阔、精神愉快，荣耀和屈辱一起忘掉，端着酒杯，迎着清风，欢喜得意极了。",
+    d: "这时登上这座楼，就会觉得心胸开阔、精神愉快，荣耀和屈辱一起忘掉，把酒洒向风中，欢喜得意极了。",
+    k: "旷：开阔。怡：愉快。宠：荣耀。辱：屈辱。偕：一起。把：拿着、端着（动词）。临：面对。洋洋：得意的样子。",
+    w: "“把”古义是动词“持、端”，今义才是介词“把”。把酒临风＝端着酒杯迎着风。" },
+  { p: 5, o: "嗟夫！予尝求古仁人之心，或异二者之为。",
+    t: "唉！我曾经探究古时品德高尚的人的思想感情，他们也许和上面两种人的表现不同，",
+    d: "唉！我曾经品尝古时品德高尚的人的心意，他们也许和上面两种人的表现不同，",
+    k: "嗟夫：唉，感叹词。尝：曾经。求：探究。古仁人：古代品德高尚的人。或：也许。为：表现、做法。",
+    w: "“尝”是“曾经”，“求”是“探求”——不是“品尝”。" },
+  { p: 5, o: "何哉？不以物喜，不以己悲；",
+    t: "为什么呢？他们不因外在环境的好坏而欢喜，也不因自身的得失而悲伤；",
+    d: "为什么呢？他们不因得到财物而欢喜，也不因自身的得失而悲伤；",
+    k: "以：因为。物：外在环境。己：自己的境遇。两句互文，意思是不因外物和个人得失而或喜或悲。",
+    w: "“物”指外在的环境与际遇（上文的阴晴景物），不是钱财。" },
+  { p: 5, o: "居庙堂之高，则忧其民；处江湖之远，则忧其君；",
+    t: "在朝廷做高官，就为百姓担忧；被贬到偏远的地方，就为君主担忧。",
+    d: "住在高高的庙宇里，就为百姓担忧；漂泊在江河湖海上，就为君主担忧。",
+    k: "庙堂：朝廷。江湖：远离朝廷的地方。高、远：形容词作名词，指高位、偏远之地。",
+    w: "“庙堂”指朝廷，“江湖”指远离朝廷的地方——一个是做官，一个是被贬，不是寺庙和江河。" },
+  { p: 5, o: "是进亦忧，退亦忧。",
+    t: "这样看来，在朝做官也忧，退居在外也忧。",
+    d: "这样看来，往前走也忧，往后退也忧。",
+    k: "是：这样，指示代词。进：在朝廷做官。退：离开朝廷。",
+    w: "“是”古义是“这”；“进、退”指在朝做官与退处江湖，不是走路的前进后退。" },
+  { p: 5, o: "然则何时而乐耶？",
+    t: "既然如此，那么他们什么时候才快乐呢？",
+    d: "可是，他们什么时候才快乐呢？",
+    k: "然则：既然这样，那么。耶：语气词，呢。",
+    w: "又是“然则”：既然这样，那么——承上启下，不是转折的“然而”。" },
+  { p: 5, o: "其必曰：先天下之忧而忧，后天下之乐而乐乎。",
+    t: "他们一定会说：“在天下人忧愁之前先忧愁，在天下人快乐之后才快乐”吧。",
+    d: "他们一定会说：“在天下人忧愁之后才忧愁，在天下人快乐之前先快乐”吧。",
+    k: "其：表推测，大概。先：在……之前。后：在……之后。这一句是全文的中心句。",
+    w: "先忧后乐：忧在天下人之前，乐在天下人之后。干扰项把先后颠倒了——这句是全文主旨，一个字都不能错。" },
+  { p: 5, o: "噫！微斯人，吾谁与归？",
+    t: "唉！要是没有这样的人，我还能跟谁同道呢？",
+    d: "唉！这样微不足道的人，我怎能和他同道呢？",
+    k: "噫（yī）：感叹词。微：如果没有。斯人：这样的人。谁与归：即“与谁归”（宾语前置）。归：归依、同道。",
+    w: "“微”古义是“如果没有”，今义才是“细微”。作者是说：没有这样的人，我还能跟随谁呢？" },
+  { p: 6, o: "时六年九月十五日。",
+    t: "写于庆历六年九月十五日。",
+    d: "写于六年前的九月十五日。",
+    k: "时：当时，写作的时候。六年：庆历六年（1046年），承开头“庆历四年”省去年号。",
+    w: "“六年”是庆历六年（1046年），开头已说“庆历四年”，这里省了年号，不是“六年前”。" },
+];
+
+// ---------- 状态 ----------
+const state = S.map(() => ({ pick: null, first: null, order: Math.random() < .5 ? ["t", "d"] : ["d", "t"] }));
+let cur = -1;
+
+const $ = (id) => document.getElementById(id);
+function el(tag, attrs, kids) {
+  const n = document.createElement(tag);
+  for (const k in attrs || {}) {
+    if (k === "onclick") n.addEventListener("click", attrs[k]);
+    else if (k === "html") n.innerHTML = attrs[k];
+    else n.setAttribute(k, attrs[k]);
+  }
+  for (const c of kids || []) n.append(c);
+  return n;
+}
+
+// ---------- 文章 ----------
+function renderArticle() {
+  const box = $("paras"); box.innerHTML = "";
+  const groups = {};
+  S.forEach((s, i) => (groups[s.p] = groups[s.p] || []).push(i));
+  for (const p in groups) {
+    const para = el("p", { class: "para" + (p === "6" ? " date" : "") });
+    if (p !== "6") para.append(el("span", { class: "para-no", "aria-hidden": "true" }, [p]));
+    for (const i of groups[p]) {
+      const sp = el("span", { class: "s", role: "button", tabindex: "0", "data-i": String(i) }, [S[i].o]);
+      sp.addEventListener("click", () => openSentence(i));
+      sp.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openSentence(i); } });
+      para.append(sp);
+    }
+    box.append(para);
+    box.append(el("div", { class: "tr" }, [groups[p].map((i) => S[i].t).join("")]));
+  }
+}
+
+function paint() {
+  document.querySelectorAll(".s").forEach((sp) => {
+    const i = +sp.dataset.i, st = state[i];
+    sp.classList.toggle("active", i === cur);
+    sp.classList.toggle("ok", st.first === true);
+    sp.classList.toggle("bad", st.first === false);
+  });
+  const done = state.filter((s) => s.first !== null).length;
+  $("prog-text").textContent = `已判 ${done} / ${S.length} 句`;
+  $("prog-bar").style.transform = `scaleX(${done / S.length})`;
+  renderResult();
+}
+
+// ---------- 判读面板 ----------
+function openSentence(i) {
+  cur = i;
+  unfold(true);
+  renderPanel();
+  $("panel").classList.add("open");
+  paint();
+}
+function closePanel() { $("panel").classList.remove("open"); cur = -1; paint(); }
+
+function renderPanel() {
+  const i = cur, s = S[i], st = state[i], P = $("panel");
+  P.innerHTML = "";
+  const nth = S.slice(0, i + 1).filter((x) => x.p === s.p).length;
+  P.append(el("div", { class: "p-tag" }, [
+    el("span", {}, [s.p === 6 ? `文末 · 写作日期` : `第 ${s.p} 段 · 第 ${nth} 句`]),
+    el("button", { class: "p-close", type: "button", "aria-label": "关闭", onclick: closePanel }, ["×"]),
+  ]));
+  P.append(el("div", { class: "p-quote" }, [s.o]));
+  P.append(el("div", { class: "p-step" }, [el("span", { class: "seal seal-sm" }, ["判"]), "哪一个译文是对的？"]));
+
+  const answered = st.pick !== null;
+  st.order.forEach((key, n) => {
+    const b = el("button", { class: "opt", type: "button", "data-k": n ? "乙" : "甲" }, [s[key]]);
+    if (answered) {
+      b.disabled = true;
+      if (key === "t") b.classList.add("right");
+      else if (st.pick === "d") b.classList.add("wrong");
+      else b.classList.add("dim");
+    } else b.addEventListener("click", () => choose(key));
+    P.append(b);
+  });
+
+  if (answered) {
+    const ok = st.pick === "t";
+    const box = el("div", { class: "reveal" });
+    box.append(el("div", { class: "verdict " + (ok ? "ok" : "bad") }, [ok ? "判对了。" : "判错了——绿色那个才对。"]));
+    box.append(el("div", { class: "note" }, [el("h4", {}, ["关键在哪里"]), el("p", {}, [s.w])]));
+    box.append(el("div", { class: "note" }, [el("h4", {}, ["字词注释"]), el("p", {}, [s.k])]));
+    const nav = el("div", { class: "p-nav" });
+    const next = nextUndone(i);
+    if (next !== -1) nav.append(el("button", { class: "btn", type: "button", onclick: () => openSentence(next) }, ["下一句 →"]));
+    else nav.append(el("button", { class: "btn", type: "button", onclick: () => { closePanel(); $("result").scrollIntoView(); } }, ["看成绩"]));
+    box.append(nav);
+    P.append(box);
+  }
+}
+
+function choose(key) {
+  const st = state[cur];
+  st.pick = key;
+  if (st.first === null) st.first = key === "t";
+  renderPanel();
+  paint();
+}
+function nextUndone(i) {
+  for (let k = 1; k <= S.length; k++) { const j = (i + k) % S.length; if (state[j].pick === null) return j; }
+  return -1;
+}
+
+// ---------- 成绩 ----------
+function renderResult() {
+  const done = state.filter((s) => s.first !== null).length;
+  const right = state.filter((s) => s.first === true).length;
+  $("stats").innerHTML = "";
+  [[done, "已判"], [right, "一次判对"], [done - right, "判错过"]].forEach(([n, t]) =>
+    $("stats").append(el("div", { class: "stat" }, [el("b", {}, [String(n)]), el("span", {}, [t])])));
+  const ul = $("redo"); ul.innerHTML = "";
+  state.forEach((st, i) => {
+    if (st.first === false) ul.append(el("li", {}, [el("button", { type: "button", onclick: () => retry(i) }, [S[i].o])]));
+  });
+  if (!ul.children.length) ul.append(el("li", { style: "color:var(--muted)" }, [done ? "暂时没有，继续保持。" : "还没开始判。"]));
+  $("result").classList.toggle("all-done", done === S.length);
+}
+// 答错的句子可以重判；成绩仍按第一次算，红线保留
+function retry(i) { state[i].pick = null; state[i].order.reverse(); openSentence(i); }
+
+// ---------- 开关 ----------
+function unfold(on) {
+  $("article").classList.toggle("folded", !on);
+  $("fold-toggle").setAttribute("aria-pressed", String(on));
+}
+$("fold-toggle").addEventListener("click", () => unfold($("article").classList.contains("folded")));
+$("unfold-btn").addEventListener("click", () => unfold(true));
+$("tr-toggle").addEventListener("click", (e) => {
+  const on = !$("article").classList.contains("tr-on");
+  $("article").classList.toggle("tr-on", on);
+  e.currentTarget.setAttribute("aria-pressed", String(on));
+  if (on) unfold(true);
+});
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closePanel(); });
+
+renderArticle();
+paint();
+</script>
+</body>
+</html>
